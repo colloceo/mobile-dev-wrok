@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="accent">#8B97F9</color>
+    <color name="accent_soft">#262B45</color>
+    <color name="on_accent">#0F1117</color>
+
+    <color name="background_start">#12141C</color>
+    <color name="background_end">#1B1E2C</color>
+
+    <color name="surface">#1E212B</color>
+    <color name="glass_surface">#1FFFFFFF</color>
+    <color name="glass_border">#26FFFFFF</color>
+
+    <color name="on_surface">#F2F3F7</color>
+    <color name="text_secondary">#9CA3AF</color>
+    <color name="divider">#2A2E3B</color>
+
+    <color name="income_green">#4CB980</color>
+    <color name="expense_red">#E4776E</color>
+    <color name="error">#E4776E</color>
+    <color name="income_soft">#1E2E27</color>
+    <color name="expense_soft">#2E211F</color>
+
+    <color name="category_1">#C87D7D</color>
+    <color name="category_2">#6D93D6</color>
+    <color name="category_3">#6BAE87</color>
+    <color name="category_4">#C99B63</color>
+    <color name="category_5">#977DBE</color>
+    <color name="category_6">#5FA49D</color>
+    <color name="category_7">#9C8471</color>
+    <color name="category_8">#7A83C9</color>
+</resources>

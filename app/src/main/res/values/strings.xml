@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Smart Expense Manager</string>
+
+    <!-- Onboarding -->
+    <string name="onboarding_skip">Skip</string>
+    <string name="onboarding_next">Next</string>
+    <string name="onboarding_get_started">Get Started</string>
+    <string name="onboarding_title_1">Track every shilling</string>
+    <string name="onboarding_body_1">Log income and expenses in seconds and always know exactly where your money goes.</string>
+    <string name="onboarding_title_2">Organize by category</string>
+    <string name="onboarding_body_2">Group spending into categories like Food, Transport, and Bills to see your habits at a glance.</string>
+    <string name="onboarding_title_3">Stay in control</string>
+    <string name="onboarding_body_3">Check live exchange rates, keep your data secure on your device, and shake to undo a mistake.</string>
+
+    <!-- Auth -->
+    <string name="login_title">Welcome back</string>
+    <string name="login_subtitle">Log in to manage your money</string>
+    <string name="username_hint">Username</string>
+    <string name="password_hint">Password</string>
+    <string name="btn_login">Log In</string>
+    <string name="btn_go_register">Create an account</string>
+    <string name="register_title">Create account</string>
+    <string name="register_subtitle">Start tracking your expenses</string>
+    <string name="confirm_password_hint">Confirm password</string>
+    <string name="btn_register">Register</string>
+    <string name="btn_go_login">Already have an account? Log in</string>
+    <string name="error_field_required">This field is required</string>
+    <string name="error_username_taken">That username is already taken</string>
+    <string name="error_invalid_login">Incorrect username or password</string>
+    <string name="error_password_mismatch">Passwords do not match</string>
+    <string name="error_password_too_short">Password must be at least 4 characters</string>
+    <string name="registration_success">Account created. Please log in.</string>
+
+    <!-- Bottom navigation -->
+    <string name="nav_home">Home</string>
+    <string name="nav_categories">Categories</string>
+    <string name="nav_rates">Rates</string>
+    <string name="nav_settings">Settings</string>
+
+    <!-- Dashboard -->
+    <string name="dashboard_greeting">%1$s, %2$s</string>
+    <string name="dashboard_subtitle">Here\'s your overview</string>
+    <string name="greeting_morning">Good morning</string>
+    <string name="greeting_afternoon">Good afternoon</string>
+    <string name="greeting_evening">Good evening</string>
+    <string name="balance_label">Current Balance</string>
+    <string name="income_label">Income</string>
+    <string name="expense_label">Expenses</string>
+    <string name="no_transactions">No transactions yet. Tap + to add one.</string>
+    <string name="recent_transactions">Recent Transactions</string>
+    <string name="menu_share">Share Summary</string>
+    <string name="menu_email">Email Report</string>
+    <string name="add_transaction_cd">Add transaction</string>
+    <string name="shake_undo_toast">Shake detected — last action undone</string>
+    <string name="shake_unavailable">No accelerometer on this device — shake-to-undo is disabled</string>
+    <string name="nothing_to_undo">Nothing to undo</string>
+    <string name="share_summary_subject">My Expense Summary</string>
+    <string name="email_chooser_title">Send report via</string>
+    <string name="error_no_email_app">No email app found on this device</string>
+
+    <!-- Add / Edit Transaction -->
+    <string name="add_transaction_title">Add Transaction</string>
+    <string name="edit_transaction_title">Edit Transaction</string>
+    <string name="amount_hint">Amount (KSh)</string>
+    <string name="note_hint">Note (optional)</string>
+    <string name="category_hint">Category</string>
+    <string name="type_income">Income</string>
+    <string name="type_expense">Expense</string>
+    <string name="btn_save">Save</string>
+    <string name="btn_delete">Delete</string>
+    <string name="error_amount_required">Enter a valid amount greater than 0</string>
+    <string name="error_category_required">Choose a category</string>
+    <string name="transaction_saved">Transaction saved</string>
+    <string name="transaction_deleted">Transaction deleted</string>
+
+    <!-- Categories -->
+    <string name="categories_title">Categories</string>
+    <string name="add_category_title">Add category</string>
+    <string name="edit_category_title">Edit category</string>
+    <string name="category_name_hint">Category name</string>
+    <string name="add_category_cd">Add category</string>
+    <string name="error_category_name_required">Enter a category name</string>
+    <string name="error_category_in_use">Cannot delete a category that has transactions</string>
+    <string name="no_categories">No categories yet</string>
+
+    <!-- Exchange rates -->
+    <string name="rates_title">Exchange Rates</string>
+    <string name="rates_subtitle">Convert your current balance (KES)</string>
+    <string name="target_currency_hint">Target currency</string>
+    <string name="btn_convert">Convert</string>
+    <string name="converted_balance_label">Converted balance</string>
+    <string name="error_network">Could not reach the exchange rate service. Check your connection.</string>
+    <string name="loading">Loading…</string>
+
+    <!-- Settings -->
+    <string name="settings_title">Settings</string>
+    <string name="settings_section_account">Account</string>
+    <string name="settings_section_appearance">Appearance</string>
+    <string name="settings_section_preferences">Preferences</string>
+    <string name="settings_section_about">About</string>
+    <string name="settings_logout">Log out</string>
+    <string name="settings_theme">Theme</string>
+    <string name="settings_theme_system">System default</string>
+    <string name="settings_theme_light">Light</string>
+    <string name="settings_theme_dark">Dark</string>
+    <string name="settings_default_currency">Default conversion currency</string>
+    <string name="settings_about_version">Version</string>
+    <string name="settings_choose_theme">Choose theme</string>
+    <string name="settings_choose_currency">Choose default currency</string>
+    <string name="settings_section_mpesa">M-Pesa</string>
+    <string name="settings_mpesa_autoimport">Auto-import M-Pesa transactions</string>
+    <string name="settings_mpesa_enabled">Enabled</string>
+    <string name="settings_mpesa_disabled">Tap to set up notification access</string>
+
+    <!-- M-Pesa -->
+    <string name="mpesa_banner_title">M-Pesa transactions detected</string>
+    <string name="mpesa_banner_body">%1$d transaction(s) waiting for review</string>
+    <string name="mpesa_banner_action">Review</string>
+    <string name="review_mpesa_title">Review M-Pesa Transactions</string>
+    <string name="no_pending_mpesa">No pending M-Pesa transactions</string>
+    <string name="mpesa_dismiss_cd">Dismiss</string>
+
+    <!-- Generic -->
+    <string name="error_database">Something went wrong saving your data. Please try again.</string>
+    <string name="ok">OK</string>
+    <string name="cancel">Cancel</string>
+    <string name="retry">Retry</string>
+</resources>

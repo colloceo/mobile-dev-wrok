@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Single accent, used sparingly -->
+    <color name="accent">#5B6EF5</color>
+    <color name="accent_soft">#EEF0FE</color>
+    <color name="on_accent">#FFFFFF</color>
+
+    <!-- Page gradient -->
+    <color name="background_start">#F1F3FB</color>
+    <color name="background_end">#E7EBF7</color>
+
+    <!-- Glass surfaces -->
+    <color name="surface">#FFFFFF</color>
+    <color name="glass_surface">#E8FFFFFF</color>
+    <color name="glass_border">#26000000</color>
+
+    <!-- Text / neutrals -->
+    <color name="on_surface">#1B1D24</color>
+    <color name="text_secondary">#6B7280</color>
+    <color name="divider">#E4E7EE</color>
+
+    <!-- Semantic (used sparingly, text-only) -->
+    <color name="income_green">#2F9E63</color>
+    <color name="expense_red">#D6584F</color>
+    <color name="error">#D6584F</color>
+    <color name="income_soft">#E3F3EA</color>
+    <color name="expense_soft">#FBEAE9</color>
+
+    <!-- Muted category tint family (one palette, low saturation) -->
+    <color name="category_1">#E39898</color>
+    <color name="category_2">#84A9E0</color>
+    <color name="category_3">#82C39C</color>
+    <color name="category_4">#E0B27A</color>
+    <color name="category_5">#AA92CC</color>
+    <color name="category_6">#75BAB3</color>
+    <color name="category_7">#B49B87</color>
+    <color name="category_8">#8E97DA</color>
+</resources>
