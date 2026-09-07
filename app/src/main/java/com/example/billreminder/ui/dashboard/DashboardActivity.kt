@@ -2,8 +2,6 @@ package com.example.billreminder.ui.dashboard
 
 import android.content.Intent
 import android.os.Bundle
-import android.view.Menu
-import android.view.MenuItem
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
@@ -13,6 +11,8 @@ import com.example.billreminder.data.local.entity.BillEntity
 import com.example.billreminder.databinding.ActivityDashboardBinding
 import com.example.billreminder.ui.auth.LoginActivity
 import com.example.billreminder.ui.bill.AddEditBillActivity
+import com.example.billreminder.ui.currency.CurrencyActivity
+import com.example.billreminder.ui.history.PaymentHistoryActivity
 import com.example.billreminder.util.BottomNavHelper
 import com.example.billreminder.util.CurrencyFormatter
 import com.example.billreminder.util.DueDateFormatter
@@ -52,13 +52,12 @@ class DashboardActivity : AppCompatActivity() {
 
         binding = ActivityDashboardBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        setSupportActionBar(binding.toolbar)
 
         BottomNavHelper.setup(this, binding.bottomNav, TopLevelDestination.HOME)
 
         val username = app.sessionManager.loggedInUsername.orEmpty()
-        binding.toolbar.title = getString(R.string.dashboard_greeting, username)
-        binding.toolbar.subtitle = getString(R.string.dashboard_subtitle)
+        binding.textGreeting.text = getString(R.string.dashboard_greeting, username)
+        binding.textAvatarInitial.text = username.trim().firstOrNull()?.uppercaseChar()?.toString().orEmpty()
 
         adapter = BillAdapter(
             onClick = { bill ->
@@ -73,8 +72,21 @@ class DashboardActivity : AppCompatActivity() {
         binding.recyclerBills.layoutManager = LinearLayoutManager(this)
         binding.recyclerBills.adapter = adapter
 
-        binding.fabAdd.setOnClickListener {
+        binding.actionAddBill.setOnClickListener {
             startActivity(Intent(this, AddEditBillActivity::class.java))
+        }
+        binding.actionMarkPaid.setOnClickListener { viewModel.markTopBillPaid() }
+        binding.actionHistory.setOnClickListener {
+            startActivity(Intent(this, PaymentHistoryActivity::class.java))
+        }
+        binding.actionCurrency.setOnClickListener {
+            startActivity(Intent(this, CurrencyActivity::class.java))
+        }
+        binding.btnShare.setOnClickListener { shareSummary() }
+        binding.btnBell.setOnClickListener {
+            val count = viewModel.uiState.value?.overdueCount ?: 0
+            val message = if (count > 0) getString(R.string.overdue_bills_count, count) else getString(R.string.nothing_to_pay)
+            Snackbar.make(binding.root, message, Snackbar.LENGTH_SHORT).show()
         }
 
         shakeDetector = ShakeDetector(this) {
@@ -88,6 +100,7 @@ class DashboardActivity : AppCompatActivity() {
             adapter.submitList(state.listItems)
             binding.emptyState.visibility = if (state.hasBills) android.view.View.GONE else android.view.View.VISIBLE
             binding.recyclerBills.visibility = if (state.hasBills) android.view.View.VISIBLE else android.view.View.GONE
+            binding.bellBadge.visibility = if (state.overdueCount > 0) android.view.View.VISIBLE else android.view.View.GONE
 
             binding.totalsContainer.removeAllViews()
             if (state.totalsByCurrency.isEmpty()) {
@@ -98,7 +111,8 @@ class DashboardActivity : AppCompatActivity() {
                 state.totalsByCurrency.drop(1).forEach { (currency, amount) ->
                     val extra = android.widget.TextView(this).apply {
                         text = CurrencyFormatter.withCode(amount, currency)
-                        setTextColor(getColor(R.color.text_secondary))
+                        setTextColor(getColor(R.color.on_accent))
+                        alpha = 0.85f
                         textSize = 14f
                     }
                     binding.totalsContainer.addView(extra)
@@ -145,21 +159,6 @@ class DashboardActivity : AppCompatActivity() {
             .setPositiveButton(R.string.btn_delete) { _, _ -> viewModel.deleteBill(bill) }
             .setNegativeButton(R.string.cancel, null)
             .show()
-    }
-
-    override fun onCreateOptionsMenu(menu: Menu): Boolean {
-        menuInflater.inflate(R.menu.menu_dashboard, menu)
-        return true
-    }
-
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        return when (item.itemId) {
-            R.id.action_share -> {
-                shareSummary()
-                true
-            }
-            else -> super.onOptionsItemSelected(item)
-        }
     }
 
     private fun buildSummaryText(): String {

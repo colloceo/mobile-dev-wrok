@@ -43,6 +43,10 @@
     <string name="share_summary_subject">Upcoming Bills</string>
     <string name="confirm_delete_bill">Delete this bill and its reminder? This cannot be undone.</string>
     <string name="mark_paid_cd">Mark as paid</string>
+    <string name="action_add_bill">Add Bill</string>
+    <string name="action_mark_paid">Mark Paid</string>
+    <string name="overdue_bell_cd">Overdue bills</string>
+    <string name="overdue_bills_count">%1$d bill(s) overdue</string>
 
     <!-- Add / Edit Bill -->
     <string name="add_bill_title">Add Bill</string>

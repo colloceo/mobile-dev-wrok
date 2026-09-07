@@ -12,6 +12,7 @@ import com.example.billreminder.data.local.entity.BillCategory
 import com.example.billreminder.data.local.entity.Recurrence
 import com.example.billreminder.databinding.ActivityAddEditBillBinding
 import com.example.billreminder.util.BillCurrencies
+import com.example.billreminder.util.CategoryStyle
 import com.example.billreminder.util.DueDateFormatter
 import com.example.billreminder.util.ViewModelFactory
 import com.example.billreminder.util.app
@@ -27,10 +28,6 @@ class AddEditBillActivity : AppCompatActivity() {
 
     private val editingId: Long by lazy { intent.getLongExtra(EXTRA_BILL_ID, 0L) }
 
-    private val categoryLabels = listOf(
-        R.string.category_utility, R.string.category_subscription,
-        R.string.category_rent, R.string.category_loan, R.string.category_other
-    )
     private val recurrenceLabels = listOf(
         R.string.recurrence_one_time, R.string.recurrence_weekly,
         R.string.recurrence_monthly, R.string.recurrence_yearly
@@ -60,12 +57,10 @@ class AddEditBillActivity : AppCompatActivity() {
         binding.dropdownCurrency.setAdapter(currencyAdapter)
         binding.dropdownCurrency.setText(app.preferencesManager.preferredCurrency, false)
 
-        val categoryNames = categoryLabels.map { getString(it) }
-        binding.dropdownCategory.setAdapter(ArrayAdapter(this, android.R.layout.simple_list_item_1, categoryNames))
-        binding.dropdownCategory.setText(categoryNames.first(), false)
-        binding.dropdownCategory.setOnItemClickListener { _, _, position, _ ->
-            selectedCategory = BillCategory.entries[position]
+        categoryChips().forEach { (category, chip, _, _) ->
+            chip.setOnClickListener { selectCategory(category) }
         }
+        selectCategory(selectedCategory)
 
         val recurrenceNames = recurrenceLabels.map { getString(it) }
         binding.dropdownRecurrence.setAdapter(ArrayAdapter(this, android.R.layout.simple_list_item_1, recurrenceNames))
@@ -101,8 +96,7 @@ class AddEditBillActivity : AppCompatActivity() {
             binding.editName.setText(bill.name)
             binding.editAmount.setText(bill.amount.toString())
             binding.dropdownCurrency.setText(bill.currencyCode, false)
-            selectedCategory = bill.category
-            binding.dropdownCategory.setText(getString(categoryLabels[bill.category.ordinal]), false)
+            selectCategory(bill.category)
             selectedRecurrence = bill.recurrence
             binding.dropdownRecurrence.setText(getString(recurrenceLabels[bill.recurrence.ordinal]), false)
             selectedDueDateMillis = bill.nextDueDateMillis
@@ -135,6 +129,33 @@ class AddEditBillActivity : AppCompatActivity() {
             }
         }
     }
+
+    private fun categoryChips() = listOf(
+        CategoryChip(BillCategory.UTILITY, binding.chipUtility, binding.chipUtilityBg, binding.chipUtilityIcon),
+        CategoryChip(BillCategory.SUBSCRIPTION, binding.chipSubscription, binding.chipSubscriptionBg, binding.chipSubscriptionIcon),
+        CategoryChip(BillCategory.RENT, binding.chipRent, binding.chipRentBg, binding.chipRentIcon),
+        CategoryChip(BillCategory.LOAN, binding.chipLoan, binding.chipLoanBg, binding.chipLoanIcon),
+        CategoryChip(BillCategory.OTHER, binding.chipOther, binding.chipOtherBg, binding.chipOtherIcon)
+    )
+
+    private fun selectCategory(category: BillCategory) {
+        selectedCategory = category
+        categoryChips().forEach { chip ->
+            val isSelected = chip.category == category
+            val bgColor = if (isSelected) CategoryStyle.colorFor(chip.category) else CategoryStyle.softColorFor(chip.category)
+            val iconColor = if (isSelected) R.color.on_accent else CategoryStyle.colorFor(chip.category)
+            chip.iconView.setImageResource(CategoryStyle.iconFor(chip.category))
+            chip.bgView.background.mutate().setTint(getColor(bgColor))
+            chip.iconView.setColorFilter(getColor(iconColor))
+        }
+    }
+
+    private data class CategoryChip(
+        val category: BillCategory,
+        val chip: android.view.View,
+        val bgView: android.view.View,
+        val iconView: android.widget.ImageView
+    )
 
     private fun updateDueDateText() {
         binding.btnPickDueDate.text = DueDateFormatter.formatted(selectedDueDateMillis)

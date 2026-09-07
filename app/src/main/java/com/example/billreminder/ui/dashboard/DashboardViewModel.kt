@@ -15,7 +15,8 @@ import kotlinx.coroutines.launch
 data class DashboardUiState(
     val listItems: List<BillListItem> = emptyList(),
     val hasBills: Boolean = false,
-    val totalsByCurrency: List<Pair<String, Double>> = emptyList()
+    val totalsByCurrency: List<Pair<String, Double>> = emptyList(),
+    val overdueCount: Int = 0
 )
 
 sealed class DashboardEvent {
@@ -48,7 +49,10 @@ class DashboardViewModel(
                     listItems = groupByUrgency(bills),
                     hasBills = bills.isNotEmpty(),
                     totalsByCurrency = bills.groupBy { it.currencyCode }
-                        .map { (currency, group) -> currency to group.sumOf { it.amount } }
+                        .map { (currency, group) -> currency to group.sumOf { it.amount } },
+                    overdueCount = bills.count {
+                        DueDateFormatter.urgencyFor(it.nextDueDateMillis, warningDays) == Urgency.OVERDUE
+                    }
                 )
             }
         }

@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!-- Single accent, used sparingly -->
-    <color name="accent">#5B6EF5</color>
-    <color name="accent_soft">#EEF0FE</color>
+    <!-- Brand — a confident money-green, used for the hero banner, primary buttons and active nav -->
+    <color name="accent">#0E8F5E</color>
+    <color name="accent_soft">#E1F3EA</color>
     <color name="on_accent">#FFFFFF</color>
+    <color name="brand_dark">#0B6E48</color>
+    <color name="white_overlay_soft">#33FFFFFF</color>
 
     <!-- Page gradient -->
     <color name="background_start">#F1F3FB</color>
@@ -19,7 +21,7 @@
     <color name="text_secondary">#6B7280</color>
     <color name="divider">#E4E7EE</color>
 
-    <!-- Urgency semantics (used sparingly, text/dot only) -->
+    <!-- Urgency semantics (used sparingly, text/pill only) -->
     <color name="danger">#D6584F</color>
     <color name="danger_soft">#FBEAE9</color>
     <color name="warn">#C98A2E</color>
@@ -27,4 +29,16 @@
     <color name="success">#2F9E63</color>
     <color name="success_soft">#E3F3EA</color>
     <color name="error">#D6584F</color>
+
+    <!-- Bill category identity (icon avatars) — distinct from urgency colors -->
+    <color name="cat_utility">#2F80C6</color>
+    <color name="cat_utility_soft">#E4EFFA</color>
+    <color name="cat_subscription">#7C5CD4</color>
+    <color name="cat_subscription_soft">#EEE8FB</color>
+    <color name="cat_rent">#A9713F</color>
+    <color name="cat_rent_soft">#F6ECDF</color>
+    <color name="cat_loan">#5C6B7A</color>
+    <color name="cat_loan_soft">#E7EBEE</color>
+    <color name="cat_other">#6B7280</color>
+    <color name="cat_other_soft">#EDEEF0</color>
 </resources>

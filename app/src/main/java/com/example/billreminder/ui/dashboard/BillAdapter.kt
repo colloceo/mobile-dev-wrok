@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.billreminder.R
 import com.example.billreminder.data.local.entity.BillEntity
 import com.example.billreminder.databinding.ItemBillBinding
+import com.example.billreminder.util.CategoryStyle
 import com.example.billreminder.util.CurrencyFormatter
 import com.example.billreminder.util.DueDateFormatter
 import com.example.billreminder.util.Urgency
@@ -54,17 +55,22 @@ class BillAdapter(
 
         fun bind(row: BillListItem.Row) {
             val bill = row.bill
+            val context = binding.root.context
             binding.textBillName.text = bill.name
             binding.textDueLabel.text = DueDateFormatter.relativeLabel(bill.nextDueDateMillis)
             binding.textAmount.text = CurrencyFormatter.withCode(bill.amount, bill.currencyCode)
 
-            val (dotColor, textColor) = when (row.urgency) {
-                Urgency.OVERDUE -> R.color.danger to R.color.danger
-                Urgency.DUE_SOON -> R.color.warn to R.color.warn
-                Urgency.UPCOMING -> R.color.success to R.color.text_secondary
+            binding.categoryIcon.setImageResource(CategoryStyle.iconFor(bill.category))
+            binding.categoryIcon.setColorFilter(context.getColor(CategoryStyle.colorFor(bill.category)))
+            binding.categoryIconBg.background.mutate().setTint(context.getColor(CategoryStyle.softColorFor(bill.category)))
+
+            val (pillSoftColor, pillTextColor) = when (row.urgency) {
+                Urgency.OVERDUE -> R.color.danger_soft to R.color.danger
+                Urgency.DUE_SOON -> R.color.warn_soft to R.color.warn
+                Urgency.UPCOMING -> R.color.success_soft to R.color.success
             }
-            binding.urgencyDot.background.setTint(binding.root.context.getColor(dotColor))
-            binding.textDueLabel.setTextColor(binding.root.context.getColor(textColor))
+            binding.textDueLabel.background.mutate().setTint(context.getColor(pillSoftColor))
+            binding.textDueLabel.setTextColor(context.getColor(pillTextColor))
 
             binding.root.setOnClickListener { onClick(bill) }
             binding.btnMarkPaid.setOnClickListener { onMarkPaid(bill) }
