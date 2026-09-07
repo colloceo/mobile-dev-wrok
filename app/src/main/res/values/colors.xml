@@ -19,20 +19,12 @@
     <color name="text_secondary">#6B7280</color>
     <color name="divider">#E4E7EE</color>
 
-    <!-- Semantic (used sparingly, text-only) -->
-    <color name="income_green">#2F9E63</color>
-    <color name="expense_red">#D6584F</color>
+    <!-- Urgency semantics (used sparingly, text/dot only) -->
+    <color name="danger">#D6584F</color>
+    <color name="danger_soft">#FBEAE9</color>
+    <color name="warn">#C98A2E</color>
+    <color name="warn_soft">#FBF1DE</color>
+    <color name="success">#2F9E63</color>
+    <color name="success_soft">#E3F3EA</color>
     <color name="error">#D6584F</color>
-    <color name="income_soft">#E3F3EA</color>
-    <color name="expense_soft">#FBEAE9</color>
-
-    <!-- Muted category tint family (one palette, low saturation) -->
-    <color name="category_1">#E39898</color>
-    <color name="category_2">#84A9E0</color>
-    <color name="category_3">#82C39C</color>
-    <color name="category_4">#E0B27A</color>
-    <color name="category_5">#AA92CC</color>
-    <color name="category_6">#75BAB3</color>
-    <color name="category_7">#B49B87</color>
-    <color name="category_8">#8E97DA</color>
 </resources>

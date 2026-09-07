@@ -5,11 +5,11 @@ plugins {
 }
 
 android {
-    namespace = "com.example.smartexpensemanager"
+    namespace = "com.example.billreminder"
     compileSdk = 36
 
     defaultConfig {
-        applicationId = "com.example.smartexpensemanager"
+        applicationId = "com.example.billreminder"
         minSdk = 24
         targetSdk = 36
         versionCode = 1

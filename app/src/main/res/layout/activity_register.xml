@@ -46,7 +46,7 @@
             android:textColor="@color/text_secondary" />
 
         <com.google.android.material.card.MaterialCardView
-            style="@style/Widget.SmartExpenseManager.CardView"
+            style="@style/Widget.BillReminder.CardView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 

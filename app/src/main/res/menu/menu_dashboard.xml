@@ -7,10 +7,4 @@
         android:icon="@drawable/ic_share"
         android:title="@string/menu_share"
         app:showAsAction="never" />
-
-    <item
-        android:id="@+id/action_email"
-        android:icon="@drawable/ic_email"
-        android:title="@string/menu_email"
-        app:showAsAction="never" />
 </menu>

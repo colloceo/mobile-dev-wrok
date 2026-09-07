@@ -8,42 +8,31 @@
         android:required="false" />
 
     <application
-        android:name=".SmartExpenseApp"
+        android:name=".BillReminderApp"
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@drawable/ic_launcher"
         android:supportsRtl="true"
-        android:theme="@style/Theme.SmartExpenseManager">
+        android:theme="@style/Theme.BillReminder">
 
         <activity
             android:name=".ui.splash.SplashActivity"
             android:exported="true"
-            android:theme="@style/Theme.SmartExpenseManager.Splash">
+            android:theme="@style/Theme.BillReminder.Splash">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
 
-        <activity android:name=".ui.onboarding.OnboardingActivity" android:exported="false" />
         <activity android:name=".ui.auth.LoginActivity" android:exported="false" />
         <activity android:name=".ui.auth.RegisterActivity" android:exported="false" />
         <activity android:name=".ui.dashboard.DashboardActivity" android:exported="false" />
-        <activity android:name=".ui.transaction.AddEditTransactionActivity" android:exported="false" />
-        <activity android:name=".ui.category.CategoryActivity" android:exported="false" />
-        <activity android:name=".ui.rates.ExchangeRateActivity" android:exported="false" />
+        <activity android:name=".ui.bill.AddEditBillActivity" android:exported="false" />
+        <activity android:name=".ui.history.PaymentHistoryActivity" android:exported="false" />
+        <activity android:name=".ui.currency.CurrencyActivity" android:exported="false" />
         <activity android:name=".ui.settings.SettingsActivity" android:exported="false" />
-        <activity android:name=".ui.mpesa.ReviewMpesaActivity" android:exported="false" />
-
-        <service
-            android:name=".service.MpesaNotificationListenerService"
-            android:exported="true"
-            android:permission="android.permission.BIND_NOTIFICATION_LISTENER_SERVICE">
-            <intent-filter>
-                <action android:name="android.service.notification.NotificationListenerService" />
-            </intent-filter>
-        </service>
 
     </application>
 

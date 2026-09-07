@@ -14,5 +14,5 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "SmartExpenseManager"
+rootProject.name = "BillReminder"
 include(":app")

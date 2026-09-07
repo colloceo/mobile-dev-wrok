@@ -1,4 +1,4 @@
 <shape xmlns:android="http://schemas.android.com/apk/res/android"
     android:shape="oval">
-    <solid android:color="@color/category_1" />
+    <solid android:color="@color/text_secondary" />
 </shape>

@@ -1,27 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Smart Expense Manager</string>
-
-    <!-- Onboarding -->
-    <string name="onboarding_skip">Skip</string>
-    <string name="onboarding_next">Next</string>
-    <string name="onboarding_get_started">Get Started</string>
-    <string name="onboarding_title_1">Track every shilling</string>
-    <string name="onboarding_body_1">Log income and expenses in seconds and always know exactly where your money goes.</string>
-    <string name="onboarding_title_2">Organize by category</string>
-    <string name="onboarding_body_2">Group spending into categories like Food, Transport, and Bills to see your habits at a glance.</string>
-    <string name="onboarding_title_3">Stay in control</string>
-    <string name="onboarding_body_3">Check live exchange rates, keep your data secure on your device, and shake to undo a mistake.</string>
+    <string name="app_name">Bill Reminder</string>
 
     <!-- Auth -->
     <string name="login_title">Welcome back</string>
-    <string name="login_subtitle">Log in to manage your money</string>
+    <string name="login_subtitle">Log in to manage your bills</string>
     <string name="username_hint">Username</string>
     <string name="password_hint">Password</string>
     <string name="btn_login">Log In</string>
     <string name="btn_go_register">Create an account</string>
     <string name="register_title">Create account</string>
-    <string name="register_subtitle">Start tracking your expenses</string>
+    <string name="register_subtitle">Never miss a due date again</string>
     <string name="confirm_password_hint">Confirm password</string>
     <string name="btn_register">Register</string>
     <string name="btn_go_login">Already have an account? Log in</string>
@@ -34,64 +23,78 @@
 
     <!-- Bottom navigation -->
     <string name="nav_home">Home</string>
-    <string name="nav_categories">Categories</string>
-    <string name="nav_rates">Rates</string>
+    <string name="nav_history">History</string>
+    <string name="nav_currency">Currency</string>
     <string name="nav_settings">Settings</string>
 
     <!-- Dashboard -->
-    <string name="dashboard_greeting">%1$s, %2$s</string>
-    <string name="dashboard_subtitle">Here\'s your overview</string>
-    <string name="greeting_morning">Good morning</string>
-    <string name="greeting_afternoon">Good afternoon</string>
-    <string name="greeting_evening">Good evening</string>
-    <string name="balance_label">Current Balance</string>
-    <string name="income_label">Income</string>
-    <string name="expense_label">Expenses</string>
-    <string name="no_transactions">No transactions yet. Tap + to add one.</string>
-    <string name="recent_transactions">Recent Transactions</string>
-    <string name="menu_share">Share Summary</string>
-    <string name="menu_email">Email Report</string>
-    <string name="add_transaction_cd">Add transaction</string>
-    <string name="shake_undo_toast">Shake detected — last action undone</string>
-    <string name="shake_unavailable">No accelerometer on this device — shake-to-undo is disabled</string>
-    <string name="nothing_to_undo">Nothing to undo</string>
-    <string name="share_summary_subject">My Expense Summary</string>
-    <string name="email_chooser_title">Send report via</string>
-    <string name="error_no_email_app">No email app found on this device</string>
+    <string name="dashboard_greeting">Hi, %1$s</string>
+    <string name="dashboard_subtitle">Here\'s what\'s due</string>
+    <string name="total_due_label">Total Due</string>
+    <string name="no_bills">No bills yet. Tap + to add one.</string>
+    <string name="your_bills">Your Bills</string>
+    <string name="menu_share">Share Upcoming Bills</string>
+    <string name="add_bill_cd">Add bill</string>
+    <string name="shake_unavailable">No accelerometer on this device — shake-to-pay is disabled. Use the checkmark on a bill instead.</string>
+    <string name="nothing_to_pay">No bills to mark as paid</string>
+    <string name="bill_marked_paid">%1$s marked as paid</string>
+    <string name="undo">Undo</string>
+    <string name="undo_performed">Undone</string>
+    <string name="share_summary_subject">Upcoming Bills</string>
+    <string name="confirm_delete_bill">Delete this bill and its reminder? This cannot be undone.</string>
+    <string name="mark_paid_cd">Mark as paid</string>
 
-    <!-- Add / Edit Transaction -->
-    <string name="add_transaction_title">Add Transaction</string>
-    <string name="edit_transaction_title">Edit Transaction</string>
-    <string name="amount_hint">Amount (KSh)</string>
-    <string name="note_hint">Note (optional)</string>
+    <!-- Add / Edit Bill -->
+    <string name="add_bill_title">Add Bill</string>
+    <string name="edit_bill_title">Edit Bill</string>
+    <string name="bill_name_hint">Bill name (e.g. Netflix, KPLC)</string>
+    <string name="amount_hint">Amount</string>
+    <string name="currency_hint">Currency</string>
     <string name="category_hint">Category</string>
-    <string name="type_income">Income</string>
-    <string name="type_expense">Expense</string>
+    <string name="recurrence_hint">Repeats</string>
+    <string name="due_date_label">Next due date</string>
+    <string name="biller_phone_hint">Biller phone (optional)</string>
+    <string name="biller_email_hint">Biller email (optional)</string>
+    <string name="notes_hint">Notes (optional)</string>
+    <string name="btn_call">Call</string>
+    <string name="btn_email">Email</string>
     <string name="btn_save">Save</string>
     <string name="btn_delete">Delete</string>
+    <string name="error_name_required">Enter a bill name</string>
     <string name="error_amount_required">Enter a valid amount greater than 0</string>
-    <string name="error_category_required">Choose a category</string>
-    <string name="transaction_saved">Transaction saved</string>
-    <string name="transaction_deleted">Transaction deleted</string>
+    <string name="error_due_date_required">Pick a due date</string>
+    <string name="error_no_phone">Add a biller phone number first</string>
+    <string name="error_no_email">Add a biller email first</string>
+    <string name="error_no_email_app">No email app found on this device</string>
+    <string name="email_biller_subject">About my %1$s bill</string>
+    <string name="bill_saved">Bill saved</string>
+    <string name="bill_deleted">Bill deleted</string>
 
-    <!-- Categories -->
-    <string name="categories_title">Categories</string>
-    <string name="add_category_title">Add category</string>
-    <string name="edit_category_title">Edit category</string>
-    <string name="category_name_hint">Category name</string>
-    <string name="add_category_cd">Add category</string>
-    <string name="error_category_name_required">Enter a category name</string>
-    <string name="error_category_in_use">Cannot delete a category that has transactions</string>
-    <string name="no_categories">No categories yet</string>
+    <string name="category_utility">Utility</string>
+    <string name="category_subscription">Subscription</string>
+    <string name="category_rent">Rent</string>
+    <string name="category_loan">Loan</string>
+    <string name="category_other">Other</string>
 
-    <!-- Exchange rates -->
-    <string name="rates_title">Exchange Rates</string>
-    <string name="rates_subtitle">Convert your current balance (KES)</string>
-    <string name="target_currency_hint">Target currency</string>
+    <string name="recurrence_one_time">One-time</string>
+    <string name="recurrence_weekly">Weekly</string>
+    <string name="recurrence_monthly">Monthly</string>
+    <string name="recurrence_yearly">Yearly</string>
+
+    <!-- Payment history -->
+    <string name="payment_history_title">Payment History</string>
+    <string name="no_payments">No payments logged yet</string>
+    <string name="delete_payment_cd">Delete this payment record</string>
+
+    <!-- Currency -->
+    <string name="currency_title">Currency Converter</string>
+    <string name="currency_subtitle">Convert a bill\'s amount into another currency</string>
+    <string name="bill_hint">Bill</string>
+    <string name="target_currency_hint">Convert to</string>
     <string name="btn_convert">Convert</string>
-    <string name="converted_balance_label">Converted balance</string>
+    <string name="converted_amount_label">Converted amount</string>
     <string name="error_network">Could not reach the exchange rate service. Check your connection.</string>
-    <string name="loading">Loading…</string>
+    <string name="no_bills_to_convert">Add a bill first to convert its amount</string>
 
     <!-- Settings -->
     <string name="settings_title">Settings</string>
@@ -104,22 +107,13 @@
     <string name="settings_theme_system">System default</string>
     <string name="settings_theme_light">Light</string>
     <string name="settings_theme_dark">Dark</string>
-    <string name="settings_default_currency">Default conversion currency</string>
+    <string name="settings_default_currency">Preferred currency</string>
+    <string name="settings_warning_days">Warn me before due date</string>
+    <string name="settings_warning_days_value">%1$d day(s) before</string>
+    <string name="settings_choose_warning_days">Warn how many days before?</string>
     <string name="settings_about_version">Version</string>
     <string name="settings_choose_theme">Choose theme</string>
-    <string name="settings_choose_currency">Choose default currency</string>
-    <string name="settings_section_mpesa">M-Pesa</string>
-    <string name="settings_mpesa_autoimport">Auto-import M-Pesa transactions</string>
-    <string name="settings_mpesa_enabled">Enabled</string>
-    <string name="settings_mpesa_disabled">Tap to set up notification access</string>
-
-    <!-- M-Pesa -->
-    <string name="mpesa_banner_title">M-Pesa transactions detected</string>
-    <string name="mpesa_banner_body">%1$d transaction(s) waiting for review</string>
-    <string name="mpesa_banner_action">Review</string>
-    <string name="review_mpesa_title">Review M-Pesa Transactions</string>
-    <string name="no_pending_mpesa">No pending M-Pesa transactions</string>
-    <string name="mpesa_dismiss_cd">Dismiss</string>
+    <string name="settings_choose_currency">Choose preferred currency</string>
 
     <!-- Generic -->
     <string name="error_database">Something went wrong saving your data. Please try again.</string>

@@ -37,7 +37,7 @@
                 android:textSize="12sp" />
 
             <com.google.android.material.card.MaterialCardView
-                style="@style/Widget.SmartExpenseManager.ListCard"
+                style="@style/Widget.BillReminder.ListCard"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="6dp">
@@ -117,7 +117,7 @@
                 android:textSize="12sp" />
 
             <com.google.android.material.card.MaterialCardView
-                style="@style/Widget.SmartExpenseManager.ListCard"
+                style="@style/Widget.BillReminder.ListCard"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="6dp">
@@ -169,111 +169,92 @@
                 android:textSize="12sp" />
 
             <com.google.android.material.card.MaterialCardView
-                style="@style/Widget.SmartExpenseManager.ListCard"
+                style="@style/Widget.BillReminder.ListCard"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="6dp">
 
                 <LinearLayout
-                    android:id="@+id/rowCurrency"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="?attr/selectableItemBackground"
-                    android:clickable="true"
-                    android:focusable="true"
-                    android:gravity="center_vertical"
-                    android:orientation="horizontal"
-                    android:padding="16dp">
-
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="@string/settings_default_currency"
-                        android:textColor="@color/on_surface"
-                        android:textSize="15sp" />
-
-                    <TextView
-                        android:id="@+id/textCurrencyValue"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginEnd="8dp"
-                        android:textColor="@color/text_secondary"
-                        android:textSize="14sp"
-                        tools:text="USD" />
-
-                    <ImageView
-                        android:layout_width="18dp"
-                        android:layout_height="18dp"
-                        android:tint="@color/text_secondary"
-                        android:src="@drawable/ic_chevron_right"
-                        android:contentDescription="@null" />
-                </LinearLayout>
-            </com.google.android.material.card.MaterialCardView>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:layout_marginStart="4dp"
-                android:text="@string/settings_section_mpesa"
-                android:textColor="@color/text_secondary"
-                android:textSize="12sp" />
-
-            <com.google.android.material.card.MaterialCardView
-                style="@style/Widget.SmartExpenseManager.ListCard"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="6dp">
-
-                <LinearLayout
-                    android:id="@+id/rowMpesa"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="?attr/selectableItemBackground"
-                    android:clickable="true"
-                    android:focusable="true"
-                    android:gravity="center_vertical"
-                    android:orientation="horizontal"
-                    android:padding="16dp">
-
-                    <ImageView
-                        android:layout_width="22dp"
-                        android:layout_height="22dp"
-                        android:tint="@color/accent"
-                        android:src="@drawable/ic_notifications"
-                        android:contentDescription="@null" />
+                    android:orientation="vertical">
 
                     <LinearLayout
-                        android:layout_width="0dp"
+                        android:id="@+id/rowCurrency"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="14dp"
-                        android:layout_weight="1"
-                        android:orientation="vertical">
+                        android:background="?attr/selectableItemBackground"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal"
+                        android:padding="16dp">
 
                         <TextView
-                            android:layout_width="wrap_content"
+                            android:layout_width="0dp"
                             android:layout_height="wrap_content"
-                            android:text="@string/settings_mpesa_autoimport"
+                            android:layout_weight="1"
+                            android:text="@string/settings_default_currency"
                             android:textColor="@color/on_surface"
                             android:textSize="15sp" />
 
                         <TextView
-                            android:id="@+id/textMpesaStatus"
+                            android:id="@+id/textCurrencyValue"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="2dp"
+                            android:layout_marginEnd="8dp"
                             android:textColor="@color/text_secondary"
-                            android:textSize="12sp"
-                            tools:text="Enabled" />
+                            android:textSize="14sp"
+                            tools:text="KES" />
+
+                        <ImageView
+                            android:layout_width="18dp"
+                            android:layout_height="18dp"
+                            android:tint="@color/text_secondary"
+                            android:src="@drawable/ic_chevron_right"
+                            android:contentDescription="@null" />
                     </LinearLayout>
 
-                    <ImageView
-                        android:layout_width="18dp"
-                        android:layout_height="18dp"
-                        android:tint="@color/text_secondary"
-                        android:src="@drawable/ic_chevron_right"
-                        android:contentDescription="@null" />
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="@color/divider" />
+
+                    <LinearLayout
+                        android:id="@+id/rowWarningDays"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="?attr/selectableItemBackground"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal"
+                        android:padding="16dp">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="@string/settings_warning_days"
+                            android:textColor="@color/on_surface"
+                            android:textSize="15sp" />
+
+                        <TextView
+                            android:id="@+id/textWarningDaysValue"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="8dp"
+                            android:textColor="@color/text_secondary"
+                            android:textSize="14sp"
+                            tools:text="3 day(s) before" />
+
+                        <ImageView
+                            android:layout_width="18dp"
+                            android:layout_height="18dp"
+                            android:tint="@color/text_secondary"
+                            android:src="@drawable/ic_chevron_right"
+                            android:contentDescription="@null" />
+                    </LinearLayout>
                 </LinearLayout>
             </com.google.android.material.card.MaterialCardView>
 
@@ -287,7 +268,7 @@
                 android:textSize="12sp" />
 
             <com.google.android.material.card.MaterialCardView
-                style="@style/Widget.SmartExpenseManager.ListCard"
+                style="@style/Widget.BillReminder.ListCard"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="6dp">
