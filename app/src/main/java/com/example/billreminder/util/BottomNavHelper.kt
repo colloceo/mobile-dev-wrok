@@ -46,9 +46,11 @@ object BottomNavHelper {
             TopLevelDestination.CURRENCY -> CurrencyActivity::class.java
             TopLevelDestination.SETTINGS -> SettingsActivity::class.java
         }
-        val intent = Intent(activity, targetClass).apply {
-            flags = Intent.FLAG_ACTIVITY_REORDER_TO_FRONT or Intent.FLAG_ACTIVITY_SINGLE_TOP
-        }
-        activity.startActivity(intent)
+        // Always start a fresh instance and finish the current one, rather than
+        // reordering a possibly stale existing instance to the front. This
+        // guarantees the highlighted tab always matches onCreate() running for
+        // the screen actually being shown — no stale bottom-nav state.
+        activity.startActivity(Intent(activity, targetClass))
+        activity.finish()
     }
 }

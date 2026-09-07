@@ -57,10 +57,12 @@
                         android:orientation="horizontal">
 
                         <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/amountLayout"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1.4"
                             android:hint="@string/amount_hint"
+                            app:prefixTextColor="@color/text_secondary"
                             style="@style/Widget.Material3.TextInputLayout.OutlinedBox">
 
                             <com.google.android.material.textfield.TextInputEditText
@@ -326,10 +328,15 @@
                         tools:text="12 Oct" />
 
                     <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/phoneLayout"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="16dp"
                         android:hint="@string/biller_phone_hint"
+                        app:endIconMode="custom"
+                        app:endIconDrawable="@drawable/ic_call"
+                        app:endIconTint="@color/accent"
+                        app:endIconContentDescription="@string/btn_call"
                         style="@style/Widget.Material3.TextInputLayout.OutlinedBox">
 
                         <com.google.android.material.textfield.TextInputEditText
@@ -339,20 +346,16 @@
                             android:inputType="phone" />
                     </com.google.android.material.textfield.TextInputLayout>
 
-                    <com.google.android.material.button.MaterialButton
-                        android:id="@+id/btnCall"
-                        style="@style/Widget.Material3.Button.TextButton.Icon"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="4dp"
-                        app:icon="@drawable/ic_call"
-                        android:text="@string/btn_call" />
-
                     <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/emailLayout"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="8dp"
+                        android:layout_marginTop="12dp"
                         android:hint="@string/biller_email_hint"
+                        app:endIconMode="custom"
+                        app:endIconDrawable="@drawable/ic_email"
+                        app:endIconTint="@color/accent"
+                        app:endIconContentDescription="@string/btn_email"
                         style="@style/Widget.Material3.TextInputLayout.OutlinedBox">
 
                         <com.google.android.material.textfield.TextInputEditText
@@ -361,15 +364,6 @@
                             android:layout_height="wrap_content"
                             android:inputType="textEmailAddress" />
                     </com.google.android.material.textfield.TextInputLayout>
-
-                    <com.google.android.material.button.MaterialButton
-                        android:id="@+id/btnEmailBiller"
-                        style="@style/Widget.Material3.Button.TextButton.Icon"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="4dp"
-                        app:icon="@drawable/ic_email"
-                        android:text="@string/btn_email" />
 
                     <com.google.android.material.textfield.TextInputLayout
                         android:layout_width="match_parent"

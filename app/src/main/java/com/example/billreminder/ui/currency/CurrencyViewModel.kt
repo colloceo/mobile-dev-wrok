@@ -35,11 +35,11 @@ class CurrencyViewModel(
         }
     }
 
-    fun convert(bill: BillEntity, targetCurrency: String) {
+    fun convert(amount: Double, baseCurrency: String, targetCurrency: String) {
         _state.value = CurrencyUiState.Loading
         viewModelScope.launch {
-            when (val result = currencyRepository.convert(bill.amount, targetCurrency, bill.currencyCode)) {
-                is Result.Success -> _state.value = CurrencyUiState.Converted(bill.amount, result.data, targetCurrency)
+            when (val result = currencyRepository.convert(amount, targetCurrency, baseCurrency)) {
+                is Result.Success -> _state.value = CurrencyUiState.Converted(amount, result.data, targetCurrency)
                 is Result.Error -> _state.value = CurrencyUiState.NetworkError
             }
         }

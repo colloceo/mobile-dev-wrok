@@ -56,6 +56,10 @@ class AddEditBillActivity : AppCompatActivity() {
         val currencyAdapter = ArrayAdapter(this, android.R.layout.simple_list_item_1, BillCurrencies.codes)
         binding.dropdownCurrency.setAdapter(currencyAdapter)
         binding.dropdownCurrency.setText(app.preferencesManager.preferredCurrency, false)
+        binding.amountLayout.prefixText = app.preferencesManager.preferredCurrency
+        binding.dropdownCurrency.setOnItemClickListener { _, _, position, _ ->
+            binding.amountLayout.prefixText = BillCurrencies.codes[position]
+        }
 
         categoryChips().forEach { (category, chip, _, _) ->
             chip.setOnClickListener { selectCategory(category) }
@@ -72,8 +76,8 @@ class AddEditBillActivity : AppCompatActivity() {
         updateDueDateText()
         binding.btnPickDueDate.setOnClickListener { showDatePicker() }
 
-        binding.btnCall.setOnClickListener { callBiller() }
-        binding.btnEmailBiller.setOnClickListener { emailBiller() }
+        binding.phoneLayout.setEndIconOnClickListener { callBiller() }
+        binding.emailLayout.setEndIconOnClickListener { emailBiller() }
 
         binding.btnSave.setOnClickListener {
             viewModel.save(
@@ -96,6 +100,7 @@ class AddEditBillActivity : AppCompatActivity() {
             binding.editName.setText(bill.name)
             binding.editAmount.setText(bill.amount.toString())
             binding.dropdownCurrency.setText(bill.currencyCode, false)
+            binding.amountLayout.prefixText = bill.currencyCode
             selectCategory(bill.category)
             selectedRecurrence = bill.recurrence
             binding.dropdownRecurrence.setText(getString(recurrenceLabels[bill.recurrence.ordinal]), false)
@@ -142,8 +147,8 @@ class AddEditBillActivity : AppCompatActivity() {
         selectedCategory = category
         categoryChips().forEach { chip ->
             val isSelected = chip.category == category
-            val bgColor = if (isSelected) CategoryStyle.colorFor(chip.category) else CategoryStyle.softColorFor(chip.category)
-            val iconColor = if (isSelected) R.color.on_accent else CategoryStyle.colorFor(chip.category)
+            val bgColor = if (isSelected) R.color.accent else R.color.divider
+            val iconColor = if (isSelected) R.color.on_accent else R.color.text_secondary
             chip.iconView.setImageResource(CategoryStyle.iconFor(chip.category))
             chip.bgView.background.mutate().setTint(getColor(bgColor))
             chip.iconView.setColorFilter(getColor(iconColor))

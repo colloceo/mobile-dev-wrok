@@ -4,8 +4,10 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
+import android.content.Intent
 import com.example.billreminder.R
 import com.example.billreminder.databinding.ActivityPaymentHistoryBinding
+import com.example.billreminder.ui.bill.AddEditBillActivity
 import com.example.billreminder.util.BottomNavHelper
 import com.example.billreminder.util.TopLevelDestination
 import com.example.billreminder.util.ViewModelFactory
@@ -29,6 +31,10 @@ class PaymentHistoryActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         BottomNavHelper.setup(this, binding.bottomNav, TopLevelDestination.HISTORY)
+
+        binding.btnEmptyAddBill.setOnClickListener {
+            startActivity(Intent(this, AddEditBillActivity::class.java))
+        }
 
         val adapter = PaymentAdapter(onDelete = { payment -> viewModel.deletePayment(payment.payment.id) })
         binding.recyclerPayments.layoutManager = LinearLayoutManager(this)

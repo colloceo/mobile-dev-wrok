@@ -5,6 +5,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.example.billreminder.R
 import com.example.billreminder.data.local.entity.PaymentWithBill
 import com.example.billreminder.databinding.ItemPaymentBinding
 import com.example.billreminder.util.CategoryStyle
@@ -30,8 +31,8 @@ class PaymentAdapter(
             binding.textAmount.text = CurrencyFormatter.withCode(item.payment.amountPaid, item.payment.currencyCode)
 
             binding.categoryIcon.setImageResource(CategoryStyle.iconFor(item.bill.category))
-            binding.categoryIcon.setColorFilter(context.getColor(CategoryStyle.colorFor(item.bill.category)))
-            binding.categoryIconBg.background.mutate().setTint(context.getColor(CategoryStyle.softColorFor(item.bill.category)))
+            binding.categoryIcon.setColorFilter(context.getColor(R.color.text_secondary))
+            binding.categoryIconBg.background.mutate().setTint(context.getColor(R.color.divider))
 
             binding.btnDelete.setOnClickListener { onDelete(item) }
         }

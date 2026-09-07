@@ -88,6 +88,7 @@
     <!-- Payment history -->
     <string name="payment_history_title">Payment History</string>
     <string name="no_payments">No payments logged yet</string>
+    <string name="empty_payments_cta">Add a Bill</string>
     <string name="delete_payment_cd">Delete this payment record</string>
 
     <!-- Currency -->
@@ -99,6 +100,9 @@
     <string name="converted_amount_label">Converted amount</string>
     <string name="error_network">Could not reach the exchange rate service. Check your connection.</string>
     <string name="no_bills_to_convert">Add a bill first to convert its amount</string>
+    <string name="label_from">From</string>
+    <string name="label_to">To</string>
+    <string name="cta_add_bill">Add a Bill</string>
 
     <!-- Settings -->
     <string name="settings_title">Settings</string>

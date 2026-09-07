@@ -3,11 +3,9 @@
     <color name="accent">#33C98A</color>
     <color name="accent_soft">#163A2C</color>
     <color name="on_accent">#06231A</color>
-    <color name="brand_dark">#0E5A3D</color>
     <color name="white_overlay_soft">#26FFFFFF</color>
 
     <color name="background_start">#12141C</color>
-    <color name="background_end">#1B1E2C</color>
 
     <color name="surface">#1E212B</color>
     <color name="glass_surface">#1FFFFFFF</color>
@@ -24,15 +22,4 @@
     <color name="success">#4CB980</color>
     <color name="success_soft">#1E2E27</color>
     <color name="error">#E4776E</color>
-
-    <color name="cat_utility">#6FA8DC</color>
-    <color name="cat_utility_soft">#1B2A38</color>
-    <color name="cat_subscription">#A78BE0</color>
-    <color name="cat_subscription_soft">#241D38</color>
-    <color name="cat_rent">#C99A63</color>
-    <color name="cat_rent_soft">#2E2416</color>
-    <color name="cat_loan">#8A97A3</color>
-    <color name="cat_loan_soft">#232A30</color>
-    <color name="cat_other">#9CA3AF</color>
-    <color name="cat_other_soft">#23262C</color>
 </resources>

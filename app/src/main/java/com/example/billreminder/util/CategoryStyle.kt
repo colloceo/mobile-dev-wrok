@@ -3,6 +3,10 @@ package com.example.billreminder.util
 import com.example.billreminder.R
 import com.example.billreminder.data.local.entity.BillCategory
 
+/**
+ * Categories are distinguished by icon glyph only — deliberately no per-category
+ * color coding, to keep the palette to one accent plus neutral grays.
+ */
 object CategoryStyle {
 
     fun iconFor(category: BillCategory): Int = when (category) {
@@ -11,22 +15,6 @@ object CategoryStyle {
         BillCategory.RENT -> R.drawable.ic_building
         BillCategory.LOAN -> R.drawable.ic_bank
         BillCategory.OTHER -> R.drawable.ic_receipt
-    }
-
-    fun colorFor(category: BillCategory): Int = when (category) {
-        BillCategory.UTILITY -> R.color.cat_utility
-        BillCategory.SUBSCRIPTION -> R.color.cat_subscription
-        BillCategory.RENT -> R.color.cat_rent
-        BillCategory.LOAN -> R.color.cat_loan
-        BillCategory.OTHER -> R.color.cat_other
-    }
-
-    fun softColorFor(category: BillCategory): Int = when (category) {
-        BillCategory.UTILITY -> R.color.cat_utility_soft
-        BillCategory.SUBSCRIPTION -> R.color.cat_subscription_soft
-        BillCategory.RENT -> R.color.cat_rent_soft
-        BillCategory.LOAN -> R.color.cat_loan_soft
-        BillCategory.OTHER -> R.color.cat_other_soft
     }
 
     fun labelRes(category: BillCategory): Int = when (category) {

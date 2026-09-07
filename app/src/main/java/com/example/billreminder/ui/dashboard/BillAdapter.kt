@@ -61,13 +61,15 @@ class BillAdapter(
             binding.textAmount.text = CurrencyFormatter.withCode(bill.amount, bill.currencyCode)
 
             binding.categoryIcon.setImageResource(CategoryStyle.iconFor(bill.category))
-            binding.categoryIcon.setColorFilter(context.getColor(CategoryStyle.colorFor(bill.category)))
-            binding.categoryIconBg.background.mutate().setTint(context.getColor(CategoryStyle.softColorFor(bill.category)))
+            binding.categoryIcon.setColorFilter(context.getColor(R.color.text_secondary))
+            binding.categoryIconBg.background.mutate().setTint(context.getColor(R.color.divider))
 
+            // Green is reserved for "paid" confirmations elsewhere (e.g. Payment
+            // History) — every not-yet-paid bill here is either overdue (red) or
+            // not (amber), regardless of how far out the due date is.
             val (pillSoftColor, pillTextColor) = when (row.urgency) {
                 Urgency.OVERDUE -> R.color.danger_soft to R.color.danger
-                Urgency.DUE_SOON -> R.color.warn_soft to R.color.warn
-                Urgency.UPCOMING -> R.color.success_soft to R.color.success
+                Urgency.DUE_SOON, Urgency.UPCOMING -> R.color.warn_soft to R.color.warn
             }
             binding.textDueLabel.background.mutate().setTint(context.getColor(pillSoftColor))
             binding.textDueLabel.setTextColor(context.getColor(pillTextColor))
