@@ -77,10 +77,14 @@ class DashboardActivity : AppCompatActivity() {
         }
         binding.actionMarkPaid.setOnClickListener { viewModel.markTopBillPaid() }
         binding.actionHistory.setOnClickListener {
+            // Same destination as the History tab — switch, don't drill down,
+            // so the back stack can't accumulate duplicate Dashboard instances.
             startActivity(Intent(this, PaymentHistoryActivity::class.java))
+            finish()
         }
         binding.actionCurrency.setOnClickListener {
             startActivity(Intent(this, CurrencyActivity::class.java))
+            finish()
         }
         binding.btnShare.setOnClickListener { shareSummary() }
         binding.btnBell.setOnClickListener {
