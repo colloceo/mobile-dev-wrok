@@ -48,6 +48,8 @@ class BillAdapter(
     class HeaderViewHolder(private val textView: TextView) : RecyclerView.ViewHolder(textView) {
         fun bind(header: BillListItem.SectionHeader) {
             textView.text = header.label
+            val color = if (header.urgency == Urgency.OVERDUE) R.color.danger else R.color.warn
+            textView.setTextColor(textView.context.getColor(color))
         }
     }
 

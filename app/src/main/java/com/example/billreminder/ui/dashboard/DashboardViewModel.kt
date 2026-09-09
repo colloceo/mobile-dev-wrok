@@ -60,17 +60,16 @@ class DashboardViewModel(
 
     private fun groupByUrgency(bills: List<BillEntity>): List<BillListItem> {
         val result = mutableListOf<BillListItem>()
-        var lastLabel: String? = null
+        var lastBucket: Urgency? = null
         for (bill in bills) {
             val urgency = DueDateFormatter.urgencyFor(bill.nextDueDateMillis, warningDays)
-            val label = when (urgency) {
-                Urgency.OVERDUE -> "Overdue"
-                Urgency.DUE_SOON -> "Due soon"
-                Urgency.UPCOMING -> "Upcoming"
-            }
-            if (label != lastLabel) {
-                result.add(BillListItem.SectionHeader(label))
-                lastLabel = label
+            // Section headers mirror the row pills: overdue is its own bucket,
+            // due-soon and upcoming share one "Due soon" header/color.
+            val bucket = if (urgency == Urgency.OVERDUE) Urgency.OVERDUE else Urgency.DUE_SOON
+            if (bucket != lastBucket) {
+                val label = if (bucket == Urgency.OVERDUE) "Overdue" else "Due soon"
+                result.add(BillListItem.SectionHeader(label, bucket))
+                lastBucket = bucket
             }
             result.add(BillListItem.Row(bill, urgency))
         }
