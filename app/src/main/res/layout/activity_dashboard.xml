@@ -81,13 +81,13 @@
 
                     <FrameLayout
                         android:id="@+id/btnShare"
-                        android:layout_width="38dp"
-                        android:layout_height="38dp"
-                        android:layout_marginEnd="8dp">
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:layout_marginEnd="4dp">
 
                         <View
-                            android:layout_width="38dp"
-                            android:layout_height="38dp"
+                            android:layout_width="48dp"
+                            android:layout_height="48dp"
                             android:background="@drawable/bg_white_circle_soft" />
 
                         <ImageView
@@ -101,12 +101,12 @@
 
                     <FrameLayout
                         android:id="@+id/btnBell"
-                        android:layout_width="38dp"
-                        android:layout_height="38dp">
+                        android:layout_width="48dp"
+                        android:layout_height="48dp">
 
                         <View
-                            android:layout_width="38dp"
-                            android:layout_height="38dp"
+                            android:layout_width="48dp"
+                            android:layout_height="48dp"
                             android:background="@drawable/bg_white_circle_soft" />
 
                         <ImageView

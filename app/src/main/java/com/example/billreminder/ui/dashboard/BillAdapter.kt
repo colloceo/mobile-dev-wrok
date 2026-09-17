@@ -63,6 +63,7 @@ class BillAdapter(
             binding.textAmount.text = CurrencyFormatter.withCode(bill.amount, bill.currencyCode)
 
             binding.categoryIcon.setImageResource(CategoryStyle.iconFor(bill.category))
+            binding.categoryIcon.contentDescription = context.getString(CategoryStyle.labelRes(bill.category))
             binding.categoryIcon.setColorFilter(context.getColor(R.color.text_secondary))
             binding.categoryIconBg.background.mutate().setTint(context.getColor(R.color.divider))
 

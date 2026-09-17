@@ -29,8 +29,8 @@
                 android:layout_width="18dp"
                 android:layout_height="18dp"
                 android:layout_gravity="center"
-                android:contentDescription="@null"
-                android:src="@drawable/ic_bolt" />
+                android:src="@drawable/ic_bolt"
+                tools:ignore="ContentDescription" />
         </FrameLayout>
 
         <LinearLayout
@@ -71,11 +71,11 @@
 
         <ImageButton
             android:id="@+id/btnDelete"
-            android:layout_width="32dp"
-            android:layout_height="32dp"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
             android:background="?attr/selectableItemBackgroundBorderless"
             android:contentDescription="@string/delete_payment_cd"
-            android:padding="6dp"
+            android:padding="14dp"
             android:src="@drawable/ic_delete"
             android:tint="@color/text_secondary" />
 

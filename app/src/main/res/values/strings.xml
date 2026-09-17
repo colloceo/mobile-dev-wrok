@@ -31,7 +31,7 @@
     <string name="dashboard_greeting">Hi, %1$s</string>
     <string name="dashboard_subtitle">Here\'s what\'s due</string>
     <string name="total_due_label">Total Due</string>
-    <string name="no_bills">No bills yet. Tap + to add one.</string>
+    <string name="no_bills">No bills yet. Tap Add Bill above to get started.</string>
     <string name="your_bills">Your Bills</string>
     <string name="menu_share">Share Upcoming Bills</string>
     <string name="add_bill_cd">Add bill</string>
@@ -47,6 +47,7 @@
     <string name="action_mark_paid">Mark Paid</string>
     <string name="overdue_bell_cd">Overdue bills</string>
     <string name="overdue_bills_count">%1$d bill(s) overdue</string>
+    <string name="no_overdue_bills">No overdue bills right now</string>
 
     <!-- Add / Edit Bill -->
     <string name="add_bill_title">Add Bill</string>
@@ -57,6 +58,7 @@
     <string name="category_hint">Category</string>
     <string name="recurrence_hint">Repeats</string>
     <string name="due_date_label">Next due date</string>
+    <string name="biller_contact_section">Biller contact (optional)</string>
     <string name="biller_phone_hint">Biller phone (optional)</string>
     <string name="biller_email_hint">Biller email (optional)</string>
     <string name="notes_hint">Notes (optional)</string>

@@ -18,6 +18,7 @@ import com.example.billreminder.util.CurrencyFormatter
 import com.example.billreminder.util.DueDateFormatter
 import com.example.billreminder.util.ShakeDetector
 import com.example.billreminder.util.TopLevelDestination
+import com.example.billreminder.util.Urgency
 import com.example.billreminder.util.ViewModelFactory
 import com.example.billreminder.util.app
 import com.google.android.material.snackbar.Snackbar
@@ -88,9 +89,13 @@ class DashboardActivity : AppCompatActivity() {
         }
         binding.btnShare.setOnClickListener { shareSummary() }
         binding.btnBell.setOnClickListener {
-            val count = viewModel.uiState.value?.overdueCount ?: 0
-            val message = if (count > 0) getString(R.string.overdue_bills_count, count) else getString(R.string.nothing_to_pay)
-            Snackbar.make(binding.root, message, Snackbar.LENGTH_SHORT).show()
+            val items = viewModel.uiState.value?.listItems.orEmpty()
+            val firstOverdue = items.indexOfFirst { it is BillListItem.Row && it.urgency == Urgency.OVERDUE }
+            if (firstOverdue >= 0) {
+                binding.recyclerBills.smoothScrollToPosition(firstOverdue)
+            } else {
+                Snackbar.make(binding.root, R.string.no_overdue_bills, Snackbar.LENGTH_SHORT).show()
+            }
         }
 
         shakeDetector = ShakeDetector(this) {

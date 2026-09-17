@@ -31,6 +31,7 @@ class PaymentAdapter(
             binding.textAmount.text = CurrencyFormatter.withCode(item.payment.amountPaid, item.payment.currencyCode)
 
             binding.categoryIcon.setImageResource(CategoryStyle.iconFor(item.bill.category))
+            binding.categoryIcon.contentDescription = context.getString(CategoryStyle.labelRes(item.bill.category))
             binding.categoryIcon.setColorFilter(context.getColor(R.color.text_secondary))
             binding.categoryIconBg.background.mutate().setTint(context.getColor(R.color.divider))
 

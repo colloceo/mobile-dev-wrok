@@ -22,7 +22,10 @@ import java.util.Calendar
 class AddEditBillActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityAddEditBillBinding
-    private var selectedDueDateMillis: Long = Calendar.getInstance().timeInMillis
+    // Defaults to one month out, matching the default Monthly recurrence below —
+    // a brand-new bill defaulting to "due today" would silently be wrong for
+    // almost every real bill, and easy to miss since the field starts populated.
+    private var selectedDueDateMillis: Long = Calendar.getInstance().apply { add(Calendar.MONTH, 1) }.timeInMillis
     private var selectedCategory: BillCategory = BillCategory.UTILITY
     private var selectedRecurrence: Recurrence = Recurrence.MONTHLY
 
@@ -80,6 +83,10 @@ class AddEditBillActivity : AppCompatActivity() {
         binding.emailLayout.setEndIconOnClickListener { emailBiller() }
 
         binding.btnSave.setOnClickListener {
+            binding.nameLayout.error = null
+            binding.amountLayout.error = null
+            binding.btnSave.isEnabled = false
+            binding.btnDelete.isEnabled = false
             viewModel.save(
                 binding.editName.text?.toString().orEmpty(),
                 binding.editAmount.text?.toString().orEmpty(),
@@ -93,7 +100,11 @@ class AddEditBillActivity : AppCompatActivity() {
             )
         }
 
-        binding.btnDelete.setOnClickListener { viewModel.delete() }
+        binding.btnDelete.setOnClickListener {
+            binding.btnSave.isEnabled = false
+            binding.btnDelete.isEnabled = false
+            viewModel.delete()
+        }
 
         viewModel.existing.observe(this) { bill ->
             if (bill == null) return@observe
@@ -122,13 +133,21 @@ class AddEditBillActivity : AppCompatActivity() {
                     finish()
                 }
                 is BillSaveState.Error -> {
+                    binding.btnSave.isEnabled = true
+                    binding.btnDelete.isEnabled = viewModel.isEditing
                     val message = when (state.reason) {
                         "name" -> getString(R.string.error_name_required)
                         "amount" -> getString(R.string.error_amount_required)
                         "due_date" -> getString(R.string.error_due_date_required)
                         else -> getString(R.string.error_database)
                     }
-                    Snackbar.make(binding.root, message, Snackbar.LENGTH_SHORT).show()
+                    // Point at the specific field when we can, not just a Snackbar
+                    // that disappears without leaving a mark on the actual problem.
+                    when (state.reason) {
+                        "name" -> binding.nameLayout.error = message
+                        "amount" -> binding.amountLayout.error = message
+                        else -> Snackbar.make(binding.root, message, Snackbar.LENGTH_SHORT).show()
+                    }
                 }
                 else -> Unit
             }

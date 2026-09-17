@@ -20,6 +20,7 @@ class ShakeDetector(
     private val accelerometer: Sensor? = sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER)
 
     private var lastUpdate = 0L
+    private var lastShakeTime = 0L
     private var lastX = 0f
     private var lastY = 0f
     private var lastZ = 0f
@@ -43,7 +44,11 @@ class ShakeDetector(
             lastZ = z
 
             val speed = sqrt((deltaX * deltaX + deltaY * deltaY + deltaZ * deltaZ).toDouble()) / deltaTime * 10000
-            if (speed > SHAKE_THRESHOLD) {
+            // A sustained or repeated shake can cross the threshold on many
+            // consecutive samples — without this cooldown, one physical shake
+            // could fire onShake() several times and mark multiple bills paid.
+            if (speed > SHAKE_THRESHOLD && now - lastShakeTime > SHAKE_COOLDOWN_MS) {
+                lastShakeTime = now
                 onShake()
             }
         }
@@ -64,5 +69,6 @@ class ShakeDetector(
     companion object {
         private const val SHAKE_THRESHOLD = 800
         private const val SAMPLE_INTERVAL_MS = 100
+        private const val SHAKE_COOLDOWN_MS = 1500
     }
 }
