@@ -68,13 +68,17 @@ class DashboardViewModel(
         var lastBucket: Urgency? = null
         for (bill in bills) {
             val urgency = DueDateFormatter.urgencyFor(bill.nextDueDateMillis, warningDays)
-            // Section headers mirror the row pills: overdue is its own bucket,
-            // due-soon and upcoming share one "Due soon" header/color.
-            val bucket = if (urgency == Urgency.OVERDUE) Urgency.OVERDUE else Urgency.DUE_SOON
-            if (bucket != lastBucket) {
-                val label = if (bucket == Urgency.OVERDUE) "Overdue" else "Due soon"
-                result.add(BillListItem.SectionHeader(label, bucket))
-                lastBucket = bucket
+            // Each urgency gets its own header now — a bill rolled forward by
+            // "Mark Paid" needs to land under "Upcoming", not stay grouped
+            // with bills that are genuinely due soon.
+            if (urgency != lastBucket) {
+                val label = when (urgency) {
+                    Urgency.OVERDUE -> "Overdue"
+                    Urgency.DUE_SOON -> "Due soon"
+                    Urgency.UPCOMING -> "Upcoming"
+                }
+                result.add(BillListItem.SectionHeader(label, urgency))
+                lastBucket = urgency
             }
             result.add(BillListItem.Row(bill, urgency))
         }

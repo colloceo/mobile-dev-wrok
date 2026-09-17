@@ -48,7 +48,11 @@ class BillAdapter(
     class HeaderViewHolder(private val textView: TextView) : RecyclerView.ViewHolder(textView) {
         fun bind(header: BillListItem.SectionHeader) {
             textView.text = header.label
-            val color = if (header.urgency == Urgency.OVERDUE) R.color.danger else R.color.warn
+            val color = when (header.urgency) {
+                Urgency.OVERDUE -> R.color.danger
+                Urgency.DUE_SOON -> R.color.warn
+                Urgency.UPCOMING -> R.color.text_secondary
+            }
             textView.setTextColor(textView.context.getColor(color))
         }
     }
@@ -66,12 +70,13 @@ class BillAdapter(
             binding.categoryIcon.contentDescription = context.getString(CategoryStyle.labelRes(bill.category))
             binding.categoryIcon.setColorFilter(context.getColor(R.color.on_surface))
 
-            // Green is reserved for "paid" confirmations elsewhere (e.g. Payment
-            // History) — every not-yet-paid bill here is either overdue (red) or
-            // not (amber), regardless of how far out the due date is.
+            // A bill just rolled forward by "Mark Paid" needs to read as calm/
+            // resolved, not as alarming as one that's actually due soon — so
+            // UPCOMING gets a neutral pill, distinct from the amber DUE_SOON one.
             val (pillSoftColor, pillTextColor) = when (row.urgency) {
                 Urgency.OVERDUE -> R.color.danger_soft to R.color.danger
-                Urgency.DUE_SOON, Urgency.UPCOMING -> R.color.warn_soft to R.color.warn
+                Urgency.DUE_SOON -> R.color.warn_soft to R.color.warn
+                Urgency.UPCOMING -> R.color.divider to R.color.text_secondary
             }
             binding.textDueLabel.background.mutate().setTint(context.getColor(pillSoftColor))
             binding.textDueLabel.setTextColor(context.getColor(pillTextColor))

@@ -128,7 +128,11 @@ class DashboardActivity : AppCompatActivity() {
                 binding.nextUpName.text = topBill.name
                 binding.nextUpAmount.text = CurrencyFormatter.withCode(topBill.amount, topBill.currencyCode)
                 binding.nextUpDueLabel.text = DueDateFormatter.relativeLabel(topBill.nextDueDateMillis)
-                val pillColor = if (state.topBillUrgency == Urgency.OVERDUE) R.color.danger else R.color.warn
+                val pillColor = when (state.topBillUrgency) {
+                    Urgency.OVERDUE -> R.color.danger
+                    Urgency.DUE_SOON -> R.color.warn
+                    else -> R.color.text_secondary
+                }
                 binding.nextUpDueLabel.setTextColor(getColor(pillColor))
             }
 

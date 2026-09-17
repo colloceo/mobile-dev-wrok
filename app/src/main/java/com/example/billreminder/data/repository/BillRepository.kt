@@ -75,13 +75,21 @@ class BillRepository(
     }
 
     private fun rollForward(fromMillis: Long, recurrence: Recurrence): Long {
+        if (recurrence == Recurrence.ONE_TIME) return fromMillis
+        val now = System.currentTimeMillis()
         val calendar = Calendar.getInstance().apply { timeInMillis = fromMillis }
-        when (recurrence) {
-            Recurrence.WEEKLY -> calendar.add(Calendar.DAY_OF_YEAR, 7)
-            Recurrence.MONTHLY -> calendar.add(Calendar.MONTH, 1)
-            Recurrence.YEARLY -> calendar.add(Calendar.YEAR, 1)
-            Recurrence.ONE_TIME -> Unit
-        }
+        // A bill can fall behind by more than one cycle (e.g. left unpaid for
+        // months). Adding a single period could still land in the past, which
+        // would leave a just-paid bill showing as overdue — so keep advancing
+        // until the next due date is actually ahead of now.
+        do {
+            when (recurrence) {
+                Recurrence.WEEKLY -> calendar.add(Calendar.DAY_OF_YEAR, 7)
+                Recurrence.MONTHLY -> calendar.add(Calendar.MONTH, 1)
+                Recurrence.YEARLY -> calendar.add(Calendar.YEAR, 1)
+                Recurrence.ONE_TIME -> Unit
+            }
+        } while (calendar.timeInMillis <= now)
         return calendar.timeInMillis
     }
 }
