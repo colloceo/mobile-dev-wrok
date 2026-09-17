@@ -32,8 +32,7 @@ class PaymentAdapter(
 
             binding.categoryIcon.setImageResource(CategoryStyle.iconFor(item.bill.category))
             binding.categoryIcon.contentDescription = context.getString(CategoryStyle.labelRes(item.bill.category))
-            binding.categoryIcon.setColorFilter(context.getColor(R.color.text_secondary))
-            binding.categoryIconBg.background.mutate().setTint(context.getColor(R.color.divider))
+            binding.categoryIcon.setColorFilter(context.getColor(R.color.on_surface))
 
             binding.btnDelete.setOnClickListener { onDelete(item) }
         }

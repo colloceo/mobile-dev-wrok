@@ -130,27 +130,15 @@
                 </com.google.android.material.card.MaterialCardView>
 
                 <!-- Direction indicator -->
-                <FrameLayout
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
+                <ImageView
+                    android:layout_width="26dp"
+                    android:layout_height="26dp"
                     android:layout_gravity="center_horizontal"
-                    android:layout_marginTop="-14dp"
-                    android:layout_marginBottom="-14dp">
-
-                    <View
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
-                        android:background="@drawable/bg_circle"
-                        android:backgroundTint="@color/surface" />
-
-                    <ImageView
-                        android:layout_width="18dp"
-                        android:layout_height="18dp"
-                        android:layout_gravity="center"
-                        android:contentDescription="@null"
-                        android:src="@drawable/ic_arrow_downward"
-                        android:tint="@color/text_secondary" />
-                </FrameLayout>
+                    android:layout_marginTop="-13dp"
+                    android:layout_marginBottom="-13dp"
+                    android:contentDescription="@null"
+                    android:src="@drawable/ic_arrow_downward"
+                    android:tint="@color/accent" />
 
                 <!-- TO -->
                 <com.google.android.material.card.MaterialCardView

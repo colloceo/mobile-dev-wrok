@@ -64,8 +64,7 @@ class BillAdapter(
 
             binding.categoryIcon.setImageResource(CategoryStyle.iconFor(bill.category))
             binding.categoryIcon.contentDescription = context.getString(CategoryStyle.labelRes(bill.category))
-            binding.categoryIcon.setColorFilter(context.getColor(R.color.text_secondary))
-            binding.categoryIconBg.background.mutate().setTint(context.getColor(R.color.divider))
+            binding.categoryIcon.setColorFilter(context.getColor(R.color.on_surface))
 
             // Green is reserved for "paid" confirmations elsewhere (e.g. Payment
             // History) — every not-yet-paid bill here is either overdue (red) or

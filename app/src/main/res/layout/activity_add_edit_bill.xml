@@ -132,29 +132,17 @@
                                 android:gravity="center"
                                 android:orientation="vertical">
 
-                                <FrameLayout
-                                    android:layout_width="42dp"
-                                    android:layout_height="42dp">
-
-                                    <View
-                                        android:id="@+id/chipUtilityBg"
-                                        android:layout_width="42dp"
-                                        android:layout_height="42dp"
-                                        android:background="@drawable/bg_circle" />
-
-                                    <ImageView
-                                        android:id="@+id/chipUtilityIcon"
-                                        android:layout_width="20dp"
-                                        android:layout_height="20dp"
-                                        android:layout_gravity="center"
-                                        android:contentDescription="@null"
-                                        android:src="@drawable/ic_bolt" />
-                                </FrameLayout>
+                                <ImageView
+                                    android:id="@+id/chipUtilityIcon"
+                                    android:layout_width="26dp"
+                                    android:layout_height="26dp"
+                                    android:contentDescription="@null"
+                                    android:src="@drawable/ic_bolt" />
 
                                 <TextView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:layout_marginTop="5dp"
+                                    android:layout_marginTop="6dp"
                                     android:text="@string/category_utility"
                                     android:textColor="@color/on_surface"
                                     android:textSize="10.5sp" />
@@ -169,29 +157,17 @@
                                 android:gravity="center"
                                 android:orientation="vertical">
 
-                                <FrameLayout
-                                    android:layout_width="42dp"
-                                    android:layout_height="42dp">
-
-                                    <View
-                                        android:id="@+id/chipSubscriptionBg"
-                                        android:layout_width="42dp"
-                                        android:layout_height="42dp"
-                                        android:background="@drawable/bg_circle" />
-
-                                    <ImageView
-                                        android:id="@+id/chipSubscriptionIcon"
-                                        android:layout_width="20dp"
-                                        android:layout_height="20dp"
-                                        android:layout_gravity="center"
-                                        android:contentDescription="@null"
-                                        android:src="@drawable/ic_repeat" />
-                                </FrameLayout>
+                                <ImageView
+                                    android:id="@+id/chipSubscriptionIcon"
+                                    android:layout_width="26dp"
+                                    android:layout_height="26dp"
+                                    android:contentDescription="@null"
+                                    android:src="@drawable/ic_repeat" />
 
                                 <TextView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:layout_marginTop="5dp"
+                                    android:layout_marginTop="6dp"
                                     android:text="@string/category_subscription"
                                     android:textColor="@color/on_surface"
                                     android:textSize="10.5sp" />
@@ -206,29 +182,17 @@
                                 android:gravity="center"
                                 android:orientation="vertical">
 
-                                <FrameLayout
-                                    android:layout_width="42dp"
-                                    android:layout_height="42dp">
-
-                                    <View
-                                        android:id="@+id/chipRentBg"
-                                        android:layout_width="42dp"
-                                        android:layout_height="42dp"
-                                        android:background="@drawable/bg_circle" />
-
-                                    <ImageView
-                                        android:id="@+id/chipRentIcon"
-                                        android:layout_width="20dp"
-                                        android:layout_height="20dp"
-                                        android:layout_gravity="center"
-                                        android:contentDescription="@null"
-                                        android:src="@drawable/ic_building" />
-                                </FrameLayout>
+                                <ImageView
+                                    android:id="@+id/chipRentIcon"
+                                    android:layout_width="26dp"
+                                    android:layout_height="26dp"
+                                    android:contentDescription="@null"
+                                    android:src="@drawable/ic_building" />
 
                                 <TextView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:layout_marginTop="5dp"
+                                    android:layout_marginTop="6dp"
                                     android:text="@string/category_rent"
                                     android:textColor="@color/on_surface"
                                     android:textSize="10.5sp" />
@@ -243,29 +207,17 @@
                                 android:gravity="center"
                                 android:orientation="vertical">
 
-                                <FrameLayout
-                                    android:layout_width="42dp"
-                                    android:layout_height="42dp">
-
-                                    <View
-                                        android:id="@+id/chipLoanBg"
-                                        android:layout_width="42dp"
-                                        android:layout_height="42dp"
-                                        android:background="@drawable/bg_circle" />
-
-                                    <ImageView
-                                        android:id="@+id/chipLoanIcon"
-                                        android:layout_width="20dp"
-                                        android:layout_height="20dp"
-                                        android:layout_gravity="center"
-                                        android:contentDescription="@null"
-                                        android:src="@drawable/ic_bank" />
-                                </FrameLayout>
+                                <ImageView
+                                    android:id="@+id/chipLoanIcon"
+                                    android:layout_width="26dp"
+                                    android:layout_height="26dp"
+                                    android:contentDescription="@null"
+                                    android:src="@drawable/ic_bank" />
 
                                 <TextView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:layout_marginTop="5dp"
+                                    android:layout_marginTop="6dp"
                                     android:text="@string/category_loan"
                                     android:textColor="@color/on_surface"
                                     android:textSize="10.5sp" />
@@ -279,29 +231,17 @@
                                 android:gravity="center"
                                 android:orientation="vertical">
 
-                                <FrameLayout
-                                    android:layout_width="42dp"
-                                    android:layout_height="42dp">
-
-                                    <View
-                                        android:id="@+id/chipOtherBg"
-                                        android:layout_width="42dp"
-                                        android:layout_height="42dp"
-                                        android:background="@drawable/bg_circle" />
-
-                                    <ImageView
-                                        android:id="@+id/chipOtherIcon"
-                                        android:layout_width="20dp"
-                                        android:layout_height="20dp"
-                                        android:layout_gravity="center"
-                                        android:contentDescription="@null"
-                                        android:src="@drawable/ic_receipt" />
-                                </FrameLayout>
+                                <ImageView
+                                    android:id="@+id/chipOtherIcon"
+                                    android:layout_width="26dp"
+                                    android:layout_height="26dp"
+                                    android:contentDescription="@null"
+                                    android:src="@drawable/ic_receipt" />
 
                                 <TextView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:layout_marginTop="5dp"
+                                    android:layout_marginTop="6dp"
                                     android:text="@string/category_other"
                                     android:textColor="@color/on_surface"
                                     android:textSize="10.5sp" />

@@ -75,47 +75,39 @@
                 <FrameLayout
                     android:id="@+id/btnShare"
                     android:layout_width="44dp"
-                    android:layout_height="44dp">
-
-                    <View
-                        android:layout_width="44dp"
-                        android:layout_height="44dp"
-                        android:background="@drawable/bg_circle"
-                        android:backgroundTint="@color/divider" />
+                    android:layout_height="44dp"
+                    android:background="?attr/selectableItemBackgroundBorderless">
 
                     <ImageView
-                        android:layout_width="18dp"
-                        android:layout_height="18dp"
+                        android:layout_width="22dp"
+                        android:layout_height="22dp"
                         android:layout_gravity="center"
                         android:contentDescription="@string/menu_share"
                         android:src="@drawable/ic_share"
-                        android:tint="@color/text_secondary" />
+                        android:tint="@color/on_surface" />
                 </FrameLayout>
 
                 <FrameLayout
                     android:id="@+id/btnBell"
                     android:layout_width="44dp"
-                    android:layout_height="44dp">
-
-                    <View
-                        android:layout_width="44dp"
-                        android:layout_height="44dp"
-                        android:background="@drawable/bg_circle"
-                        android:backgroundTint="@color/divider" />
+                    android:layout_height="44dp"
+                    android:background="?attr/selectableItemBackgroundBorderless">
 
                     <ImageView
-                        android:layout_width="18dp"
-                        android:layout_height="18dp"
+                        android:layout_width="22dp"
+                        android:layout_height="22dp"
                         android:layout_gravity="center"
                         android:contentDescription="@string/overdue_bell_cd"
                         android:src="@drawable/ic_notifications"
-                        android:tint="@color/text_secondary" />
+                        android:tint="@color/on_surface" />
 
                     <View
                         android:id="@+id/bellBadge"
                         android:layout_width="10dp"
                         android:layout_height="10dp"
                         android:layout_gravity="top|end"
+                        android:layout_marginTop="4dp"
+                        android:layout_marginEnd="4dp"
                         android:background="@drawable/bg_circle"
                         android:backgroundTint="@color/danger"
                         android:visibility="gone"
@@ -162,24 +154,13 @@
                         android:gravity="center_vertical"
                         android:orientation="horizontal">
 
-                        <FrameLayout
-                            android:layout_width="44dp"
-                            android:layout_height="44dp">
-
-                            <View
-                                android:layout_width="44dp"
-                                android:layout_height="44dp"
-                                android:background="@drawable/bg_white_circle_soft" />
-
-                            <ImageView
-                                android:id="@+id/nextUpIcon"
-                                android:layout_width="20dp"
-                                android:layout_height="20dp"
-                                android:layout_gravity="center"
-                                android:contentDescription="@null"
-                                android:src="@drawable/ic_bolt"
-                                android:tint="@color/on_accent" />
-                        </FrameLayout>
+                        <ImageView
+                            android:id="@+id/nextUpIcon"
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:contentDescription="@null"
+                            android:src="@drawable/ic_bolt"
+                            android:tint="@color/on_accent" />
 
                         <LinearLayout
                             android:layout_width="0dp"
@@ -294,28 +275,17 @@
                         android:orientation="vertical"
                         android:padding="4dp">
 
-                        <FrameLayout
-                            android:layout_width="46dp"
-                            android:layout_height="46dp">
-
-                            <View
-                                android:layout_width="46dp"
-                                android:layout_height="46dp"
-                                android:background="@drawable/bg_accent_circle" />
-
-                            <ImageView
-                                android:layout_width="20dp"
-                                android:layout_height="20dp"
-                                android:layout_gravity="center"
-                                android:contentDescription="@null"
-                                android:src="@drawable/ic_add"
-                                android:tint="@color/accent" />
-                        </FrameLayout>
+                        <ImageView
+                            android:layout_width="26dp"
+                            android:layout_height="26dp"
+                            android:contentDescription="@null"
+                            android:src="@drawable/ic_add"
+                            android:tint="@color/accent" />
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="6dp"
+                            android:layout_marginTop="8dp"
                             android:text="@string/action_add_bill"
                             android:textColor="@color/on_surface"
                             android:textSize="11.5sp" />
@@ -331,28 +301,17 @@
                         android:orientation="vertical"
                         android:padding="4dp">
 
-                        <FrameLayout
-                            android:layout_width="46dp"
-                            android:layout_height="46dp">
-
-                            <View
-                                android:layout_width="46dp"
-                                android:layout_height="46dp"
-                                android:background="@drawable/bg_accent_circle" />
-
-                            <ImageView
-                                android:layout_width="20dp"
-                                android:layout_height="20dp"
-                                android:layout_gravity="center"
-                                android:contentDescription="@null"
-                                android:src="@drawable/ic_history"
-                                android:tint="@color/accent" />
-                        </FrameLayout>
+                        <ImageView
+                            android:layout_width="26dp"
+                            android:layout_height="26dp"
+                            android:contentDescription="@null"
+                            android:src="@drawable/ic_history"
+                            android:tint="@color/accent" />
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="6dp"
+                            android:layout_marginTop="8dp"
                             android:text="@string/nav_history"
                             android:textColor="@color/on_surface"
                             android:textSize="11.5sp" />
@@ -368,28 +327,17 @@
                         android:orientation="vertical"
                         android:padding="4dp">
 
-                        <FrameLayout
-                            android:layout_width="46dp"
-                            android:layout_height="46dp">
-
-                            <View
-                                android:layout_width="46dp"
-                                android:layout_height="46dp"
-                                android:background="@drawable/bg_accent_circle" />
-
-                            <ImageView
-                                android:layout_width="20dp"
-                                android:layout_height="20dp"
-                                android:layout_gravity="center"
-                                android:contentDescription="@null"
-                                android:src="@drawable/ic_swap"
-                                android:tint="@color/accent" />
-                        </FrameLayout>
+                        <ImageView
+                            android:layout_width="26dp"
+                            android:layout_height="26dp"
+                            android:contentDescription="@null"
+                            android:src="@drawable/ic_swap"
+                            android:tint="@color/accent" />
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="6dp"
+                            android:layout_marginTop="8dp"
                             android:text="@string/nav_currency"
                             android:textColor="@color/on_surface"
                             android:textSize="11.5sp" />
@@ -419,9 +367,8 @@
                 android:visibility="gone">
 
                 <ImageView
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:alpha="0.5"
+                    android:layout_width="44dp"
+                    android:layout_height="44dp"
                     android:src="@drawable/ic_wallet"
                     android:tint="@color/text_secondary"
                     android:contentDescription="@null" />

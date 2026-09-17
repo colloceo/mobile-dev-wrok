@@ -13,20 +13,13 @@
         android:orientation="vertical"
         android:padding="24dp">
 
-        <FrameLayout
-            android:layout_width="72dp"
-            android:layout_height="72dp"
+        <ImageView
+            android:layout_width="52dp"
+            android:layout_height="52dp"
             android:layout_marginTop="56dp"
-            android:background="@drawable/bg_accent_circle">
-
-            <ImageView
-                android:layout_width="34dp"
-                android:layout_height="34dp"
-                android:layout_gravity="center"
-                android:contentDescription="@string/app_name"
-                android:src="@drawable/ic_wallet"
-                android:tint="@color/accent" />
-        </FrameLayout>
+            android:contentDescription="@string/app_name"
+            android:src="@drawable/ic_wallet"
+            android:tint="@color/accent" />
 
         <TextView
             android:layout_width="wrap_content"

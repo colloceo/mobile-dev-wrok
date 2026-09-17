@@ -68,7 +68,7 @@ class AddEditBillActivity : AppCompatActivity() {
             binding.amountLayout.prefixText = BillCurrencies.codes[position]
         }
 
-        categoryChips().forEach { (category, chip, _, _) ->
+        categoryChips().forEach { (category, chip, _) ->
             chip.setOnClickListener { selectCategory(category) }
         }
         selectCategory(selectedCategory)
@@ -164,29 +164,29 @@ class AddEditBillActivity : AppCompatActivity() {
     }
 
     private fun categoryChips() = listOf(
-        CategoryChip(BillCategory.UTILITY, binding.chipUtility, binding.chipUtilityBg, binding.chipUtilityIcon),
-        CategoryChip(BillCategory.SUBSCRIPTION, binding.chipSubscription, binding.chipSubscriptionBg, binding.chipSubscriptionIcon),
-        CategoryChip(BillCategory.RENT, binding.chipRent, binding.chipRentBg, binding.chipRentIcon),
-        CategoryChip(BillCategory.LOAN, binding.chipLoan, binding.chipLoanBg, binding.chipLoanIcon),
-        CategoryChip(BillCategory.OTHER, binding.chipOther, binding.chipOtherBg, binding.chipOtherIcon)
+        CategoryChip(BillCategory.UTILITY, binding.chipUtility, binding.chipUtilityIcon),
+        CategoryChip(BillCategory.SUBSCRIPTION, binding.chipSubscription, binding.chipSubscriptionIcon),
+        CategoryChip(BillCategory.RENT, binding.chipRent, binding.chipRentIcon),
+        CategoryChip(BillCategory.LOAN, binding.chipLoan, binding.chipLoanIcon),
+        CategoryChip(BillCategory.OTHER, binding.chipOther, binding.chipOtherIcon)
     )
 
     private fun selectCategory(category: BillCategory) {
         selectedCategory = category
         categoryChips().forEach { chip ->
             val isSelected = chip.category == category
-            val bgColor = if (isSelected) R.color.accent else R.color.divider
-            val iconColor = if (isSelected) R.color.on_accent else R.color.text_secondary
+            // No background circle — selection reads through icon weight/color
+            // alone: bold accent when selected, muted otherwise.
+            val iconColor = if (isSelected) R.color.accent else R.color.text_secondary
             chip.iconView.setImageResource(CategoryStyle.iconFor(chip.category))
-            chip.bgView.background.mutate().setTint(getColor(bgColor))
             chip.iconView.setColorFilter(getColor(iconColor))
+            chip.iconView.alpha = if (isSelected) 1f else 0.6f
         }
     }
 
     private data class CategoryChip(
         val category: BillCategory,
         val chip: android.view.View,
-        val bgView: android.view.View,
         val iconView: android.widget.ImageView
     )
 
