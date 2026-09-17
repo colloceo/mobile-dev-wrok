@@ -31,6 +31,9 @@
     <string name="dashboard_greeting">Hi, %1$s</string>
     <string name="dashboard_subtitle">Here\'s what\'s due</string>
     <string name="total_due_label">Total Due</string>
+    <string name="next_up_label">Next Up</string>
+    <string name="total_due_count">Total due · %1$d bill(s)</string>
+    <string name="all_caught_up">You\'re all caught up</string>
     <string name="no_bills">No bills yet. Tap Add Bill above to get started.</string>
     <string name="your_bills">Your Bills</string>
     <string name="menu_share">Share Upcoming Bills</string>
@@ -58,6 +61,8 @@
     <string name="category_hint">Category</string>
     <string name="recurrence_hint">Repeats</string>
     <string name="due_date_label">Next due date</string>
+    <string name="section_bill_details">Bill details</string>
+    <string name="section_schedule">Schedule</string>
     <string name="biller_contact_section">Biller contact (optional)</string>
     <string name="biller_phone_hint">Biller phone (optional)</string>
     <string name="biller_email_hint">Biller email (optional)</string>

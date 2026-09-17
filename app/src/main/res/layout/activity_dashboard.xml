@@ -17,154 +17,267 @@
             android:orientation="vertical"
             android:paddingBottom="96dp">
 
-            <!-- Hero banner -->
+            <!-- Slim identity row — no full-bleed color block; the colored
+                 surface below is reserved for the one thing that matters. -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/bg_hero"
-                android:orientation="vertical"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
                 android:paddingHorizontal="20dp"
-                android:paddingTop="28dp"
-                android:paddingBottom="26dp">
+                android:paddingTop="20dp">
+
+                <FrameLayout
+                    android:layout_width="40dp"
+                    android:layout_height="40dp">
+
+                    <View
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:background="@drawable/bg_accent_circle" />
+
+                    <TextView
+                        android:id="@+id/textAvatarInitial"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:fontFamily="sans-serif-medium"
+                        android:textColor="@color/accent"
+                        android:textSize="15sp"
+                        tools:text="A" />
+                </FrameLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="12dp"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/textGreeting"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="sans-serif-medium"
+                        android:textColor="@color/on_surface"
+                        android:textSize="15sp"
+                        tools:text="Hi, Alice" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="1dp"
+                        android:text="@string/dashboard_subtitle"
+                        android:textColor="@color/text_secondary"
+                        android:textSize="12.5sp" />
+                </LinearLayout>
+
+                <FrameLayout
+                    android:id="@+id/btnShare"
+                    android:layout_width="44dp"
+                    android:layout_height="44dp">
+
+                    <View
+                        android:layout_width="44dp"
+                        android:layout_height="44dp"
+                        android:background="@drawable/bg_circle"
+                        android:backgroundTint="@color/divider" />
+
+                    <ImageView
+                        android:layout_width="18dp"
+                        android:layout_height="18dp"
+                        android:layout_gravity="center"
+                        android:contentDescription="@string/menu_share"
+                        android:src="@drawable/ic_share"
+                        android:tint="@color/text_secondary" />
+                </FrameLayout>
+
+                <FrameLayout
+                    android:id="@+id/btnBell"
+                    android:layout_width="44dp"
+                    android:layout_height="44dp">
+
+                    <View
+                        android:layout_width="44dp"
+                        android:layout_height="44dp"
+                        android:background="@drawable/bg_circle"
+                        android:backgroundTint="@color/divider" />
+
+                    <ImageView
+                        android:layout_width="18dp"
+                        android:layout_height="18dp"
+                        android:layout_gravity="center"
+                        android:contentDescription="@string/overdue_bell_cd"
+                        android:src="@drawable/ic_notifications"
+                        android:tint="@color/text_secondary" />
+
+                    <View
+                        android:id="@+id/bellBadge"
+                        android:layout_width="10dp"
+                        android:layout_height="10dp"
+                        android:layout_gravity="top|end"
+                        android:background="@drawable/bg_circle"
+                        android:backgroundTint="@color/danger"
+                        android:visibility="gone"
+                        tools:visibility="visible" />
+                </FrameLayout>
+
+            </LinearLayout>
+
+            <!-- Next Up — the one bill that actually needs action right now.
+                 This replaces a balance banner with a task the user can finish
+                 in one tap, and doubles as the explicit target for shake-to-pay
+                 (no more guessing which bill "the top of the list" means). -->
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/nextUpCard"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                app:cardBackgroundColor="@color/accent"
+                app:cardCornerRadius="20dp"
+                app:cardElevation="0dp"
+                tools:visibility="visible">
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:gravity="center_vertical"
-                    android:orientation="horizontal">
+                    android:orientation="vertical"
+                    android:padding="18dp">
 
-                    <FrameLayout
-                        android:layout_width="44dp"
-                        android:layout_height="44dp">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:alpha="0.85"
+                        android:fontFamily="sans-serif-medium"
+                        android:letterSpacing="0.08"
+                        android:text="@string/next_up_label"
+                        android:textAllCaps="true"
+                        android:textColor="@color/on_accent"
+                        android:textSize="11.5sp" />
 
-                        <View
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <FrameLayout
                             android:layout_width="44dp"
-                            android:layout_height="44dp"
-                            android:background="@drawable/bg_white_circle_soft" />
+                            android:layout_height="44dp">
+
+                            <View
+                                android:layout_width="44dp"
+                                android:layout_height="44dp"
+                                android:background="@drawable/bg_white_circle_soft" />
+
+                            <ImageView
+                                android:id="@+id/nextUpIcon"
+                                android:layout_width="20dp"
+                                android:layout_height="20dp"
+                                android:layout_gravity="center"
+                                android:contentDescription="@null"
+                                android:src="@drawable/ic_bolt"
+                                android:tint="@color/on_accent" />
+                        </FrameLayout>
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="12dp"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:id="@+id/nextUpName"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="sans-serif-medium"
+                                android:textColor="@color/on_accent"
+                                android:textSize="17sp"
+                                tools:text="Netflix" />
+
+                            <TextView
+                                android:id="@+id/nextUpDueLabel"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="4dp"
+                                android:background="@drawable/bg_white_circle_soft"
+                                android:fontFamily="sans-serif-medium"
+                                android:paddingHorizontal="9dp"
+                                android:paddingVertical="3dp"
+                                android:textSize="11.5sp"
+                                tools:text="Due in 2 days"
+                                tools:textColor="#FFE0A23A" />
+                        </LinearLayout>
 
                         <TextView
-                            android:id="@+id/textAvatarInitial"
+                            android:id="@+id/nextUpAmount"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_gravity="center"
                             android:fontFamily="sans-serif-medium"
                             android:textColor="@color/on_accent"
                             android:textSize="17sp"
-                            tools:text="A" />
-                    </FrameLayout>
+                            tools:text="KES 1,100.00" />
 
-                    <LinearLayout
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="12dp"
-                        android:layout_weight="1"
-                        android:orientation="vertical">
-
-                        <TextView
-                            android:id="@+id/textGreeting"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:fontFamily="sans-serif-medium"
-                            android:textColor="@color/on_accent"
-                            android:textSize="16sp"
-                            tools:text="Hi, Alice" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="1dp"
-                            android:alpha="0.85"
-                            android:text="@string/dashboard_subtitle"
-                            android:textColor="@color/on_accent"
-                            android:textSize="12.5sp" />
                     </LinearLayout>
 
-                    <FrameLayout
-                        android:id="@+id/btnShare"
-                        android:layout_width="48dp"
-                        android:layout_height="48dp"
-                        android:layout_marginEnd="4dp">
-
-                        <View
-                            android:layout_width="48dp"
-                            android:layout_height="48dp"
-                            android:background="@drawable/bg_white_circle_soft" />
-
-                        <ImageView
-                            android:layout_width="18dp"
-                            android:layout_height="18dp"
-                            android:layout_gravity="center"
-                            android:contentDescription="@string/menu_share"
-                            android:src="@drawable/ic_share"
-                            android:tint="@color/on_accent" />
-                    </FrameLayout>
-
-                    <FrameLayout
-                        android:id="@+id/btnBell"
-                        android:layout_width="48dp"
-                        android:layout_height="48dp">
-
-                        <View
-                            android:layout_width="48dp"
-                            android:layout_height="48dp"
-                            android:background="@drawable/bg_white_circle_soft" />
-
-                        <ImageView
-                            android:layout_width="18dp"
-                            android:layout_height="18dp"
-                            android:layout_gravity="center"
-                            android:contentDescription="@string/overdue_bell_cd"
-                            android:src="@drawable/ic_notifications"
-                            android:tint="@color/on_accent" />
-
-                        <View
-                            android:id="@+id/bellBadge"
-                            android:layout_width="10dp"
-                            android:layout_height="10dp"
-                            android:layout_gravity="top|end"
-                            android:background="@drawable/bg_circle"
-                            android:backgroundTint="@color/danger"
-                            android:visibility="gone"
-                            tools:visibility="visible" />
-                    </FrameLayout>
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnMarkTopPaid"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:backgroundTint="@color/on_accent"
+                        android:text="@string/action_mark_paid"
+                        android:textColor="@color/accent" />
 
                 </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- Compact total — secondary to the task above, not the headline. -->
+            <LinearLayout
+                android:id="@+id/totalDueRow"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginBottom="4dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
 
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:id="@+id/textTotalDueLabel"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="22dp"
-                    android:alpha="0.85"
-                    android:text="@string/total_due_label"
-                    android:textColor="@color/on_accent"
-                    android:textSize="13sp" />
+                    android:layout_weight="1"
+                    android:textColor="@color/text_secondary"
+                    android:textSize="13sp"
+                    tools:text="Total due · 3 bill(s)" />
 
                 <TextView
                     android:id="@+id/textTotalDue"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="4dp"
                     android:fontFamily="sans-serif-medium"
-                    android:textColor="@color/on_accent"
-                    android:textSize="32sp"
-                    tools:text="KES 4,500.00" />
-
-                <LinearLayout
-                    android:id="@+id/totalsContainer"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="2dp"
-                    android:orientation="vertical" />
-
+                    android:textColor="@color/on_surface"
+                    android:textSize="14sp"
+                    tools:text="KES 27,300.00" />
             </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/totalsContainer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginBottom="8dp"
+                android:gravity="end"
+                android:orientation="vertical" />
 
             <!-- Quick actions -->
             <com.google.android.material.card.MaterialCardView
                 style="@style/Widget.BillReminder.CardView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginHorizontal="16dp"
-                android:layout_marginTop="16dp">
+                android:layout_marginHorizontal="16dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -204,43 +317,6 @@
                             android:layout_height="wrap_content"
                             android:layout_marginTop="6dp"
                             android:text="@string/action_add_bill"
-                            android:textColor="@color/on_surface"
-                            android:textSize="11.5sp" />
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:id="@+id/actionMarkPaid"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:background="?attr/selectableItemBackground"
-                        android:gravity="center"
-                        android:orientation="vertical"
-                        android:padding="4dp">
-
-                        <FrameLayout
-                            android:layout_width="46dp"
-                            android:layout_height="46dp">
-
-                            <View
-                                android:layout_width="46dp"
-                                android:layout_height="46dp"
-                                android:background="@drawable/bg_accent_circle" />
-
-                            <ImageView
-                                android:layout_width="20dp"
-                                android:layout_height="20dp"
-                                android:layout_gravity="center"
-                                android:contentDescription="@null"
-                                android:src="@drawable/ic_check"
-                                android:tint="@color/accent" />
-                        </FrameLayout>
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="6dp"
-                            android:text="@string/action_mark_paid"
                             android:textColor="@color/on_surface"
                             android:textSize="11.5sp" />
                     </LinearLayout>

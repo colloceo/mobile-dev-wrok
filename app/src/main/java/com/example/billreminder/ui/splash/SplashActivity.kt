@@ -7,6 +7,7 @@ import androidx.lifecycle.lifecycleScope
 import com.example.billreminder.databinding.ActivitySplashBinding
 import com.example.billreminder.ui.auth.LoginActivity
 import com.example.billreminder.ui.dashboard.DashboardActivity
+import com.example.billreminder.util.TransitionHelper
 import com.example.billreminder.util.app
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
@@ -27,6 +28,7 @@ class SplashActivity : AppCompatActivity() {
             }
             startActivity(Intent(this@SplashActivity, destination))
             finish()
+            TransitionHelper.crossFade(this@SplashActivity)
         }
     }
 }

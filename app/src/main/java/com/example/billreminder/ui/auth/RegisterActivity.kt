@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import com.example.billreminder.R
 import com.example.billreminder.databinding.ActivityRegisterBinding
+import com.example.billreminder.util.TransitionHelper
 import com.example.billreminder.util.ViewModelFactory
 import com.example.billreminder.util.app
 import com.google.android.material.snackbar.Snackbar
@@ -29,7 +30,10 @@ class RegisterActivity : AppCompatActivity() {
             )
         }
 
-        binding.btnGoLogin.setOnClickListener { finish() }
+        binding.btnGoLogin.setOnClickListener {
+            finish()
+            TransitionHelper.back(this)
+        }
 
         viewModel.state.observe(this) { state ->
             binding.progressBar.visibility = if (state is AuthUiState.Loading) android.view.View.VISIBLE else android.view.View.GONE
@@ -39,6 +43,7 @@ class RegisterActivity : AppCompatActivity() {
                 is AuthUiState.Success -> {
                     Snackbar.make(binding.root, R.string.registration_success, Snackbar.LENGTH_SHORT).show()
                     finish()
+                    TransitionHelper.back(this)
                 }
                 is AuthUiState.Error -> {
                     val message = when (state.reason) {

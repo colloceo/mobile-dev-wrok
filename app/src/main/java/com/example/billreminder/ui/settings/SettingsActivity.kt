@@ -12,6 +12,7 @@ import com.example.billreminder.util.BillCurrencies
 import com.example.billreminder.util.BottomNavHelper
 import com.example.billreminder.util.ThemeMode
 import com.example.billreminder.util.TopLevelDestination
+import com.example.billreminder.util.TransitionHelper
 import com.example.billreminder.util.app
 
 class SettingsActivity : AppCompatActivity() {
@@ -111,5 +112,6 @@ class SettingsActivity : AppCompatActivity() {
         app.sessionManager.logout()
         startActivity(Intent(this, LoginActivity::class.java))
         finish()
+        TransitionHelper.crossFade(this)
     }
 }

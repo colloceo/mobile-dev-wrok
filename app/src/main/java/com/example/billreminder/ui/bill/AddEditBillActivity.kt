@@ -14,6 +14,7 @@ import com.example.billreminder.databinding.ActivityAddEditBillBinding
 import com.example.billreminder.util.BillCurrencies
 import com.example.billreminder.util.CategoryStyle
 import com.example.billreminder.util.DueDateFormatter
+import com.example.billreminder.util.TransitionHelper
 import com.example.billreminder.util.ViewModelFactory
 import com.example.billreminder.util.app
 import com.google.android.material.snackbar.Snackbar
@@ -53,7 +54,10 @@ class AddEditBillActivity : AppCompatActivity() {
         binding.toolbar.title = getString(
             if (viewModel.isEditing) R.string.edit_bill_title else R.string.add_bill_title
         )
-        binding.toolbar.setNavigationOnClickListener { finish() }
+        binding.toolbar.setNavigationOnClickListener {
+            finish()
+            TransitionHelper.back(this)
+        }
         binding.btnDelete.visibility = if (viewModel.isEditing) android.view.View.VISIBLE else android.view.View.GONE
 
         val currencyAdapter = ArrayAdapter(this, android.R.layout.simple_list_item_1, BillCurrencies.codes)
@@ -87,6 +91,7 @@ class AddEditBillActivity : AppCompatActivity() {
             binding.amountLayout.error = null
             binding.btnSave.isEnabled = false
             binding.btnDelete.isEnabled = false
+            binding.progressBar.visibility = android.view.View.VISIBLE
             viewModel.save(
                 binding.editName.text?.toString().orEmpty(),
                 binding.editAmount.text?.toString().orEmpty(),
@@ -103,6 +108,7 @@ class AddEditBillActivity : AppCompatActivity() {
         binding.btnDelete.setOnClickListener {
             binding.btnSave.isEnabled = false
             binding.btnDelete.isEnabled = false
+            binding.progressBar.visibility = android.view.View.VISIBLE
             viewModel.delete()
         }
 
@@ -127,14 +133,17 @@ class AddEditBillActivity : AppCompatActivity() {
                 is BillSaveState.Saved -> {
                     Snackbar.make(binding.root, R.string.bill_saved, Snackbar.LENGTH_SHORT).show()
                     finish()
+                    TransitionHelper.back(this)
                 }
                 is BillSaveState.Deleted -> {
                     Snackbar.make(binding.root, R.string.bill_deleted, Snackbar.LENGTH_SHORT).show()
                     finish()
+                    TransitionHelper.back(this)
                 }
                 is BillSaveState.Error -> {
                     binding.btnSave.isEnabled = true
                     binding.btnDelete.isEnabled = viewModel.isEditing
+                    binding.progressBar.visibility = android.view.View.GONE
                     val message = when (state.reason) {
                         "name" -> getString(R.string.error_name_required)
                         "amount" -> getString(R.string.error_amount_required)

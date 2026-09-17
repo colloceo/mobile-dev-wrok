@@ -7,6 +7,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.example.billreminder.R
 import com.example.billreminder.databinding.ActivityLoginBinding
 import com.example.billreminder.ui.dashboard.DashboardActivity
+import com.example.billreminder.util.TransitionHelper
 import com.example.billreminder.util.ViewModelFactory
 import com.example.billreminder.util.app
 import com.google.android.material.snackbar.Snackbar
@@ -32,6 +33,7 @@ class LoginActivity : AppCompatActivity() {
 
         binding.btnGoRegister.setOnClickListener {
             startActivity(Intent(this, RegisterActivity::class.java))
+            TransitionHelper.forward(this)
         }
 
         viewModel.state.observe(this) { state ->
@@ -43,6 +45,7 @@ class LoginActivity : AppCompatActivity() {
                     app.sessionManager.login(state.user.id, state.user.username)
                     startActivity(Intent(this, DashboardActivity::class.java))
                     finish()
+                    TransitionHelper.crossFade(this)
                 }
                 is AuthUiState.Error -> {
                     val message = when (state.reason) {

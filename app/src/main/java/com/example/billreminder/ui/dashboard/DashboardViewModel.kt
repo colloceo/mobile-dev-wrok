@@ -16,7 +16,9 @@ data class DashboardUiState(
     val listItems: List<BillListItem> = emptyList(),
     val hasBills: Boolean = false,
     val totalsByCurrency: List<Pair<String, Double>> = emptyList(),
-    val overdueCount: Int = 0
+    val overdueCount: Int = 0,
+    val topBill: BillEntity? = null,
+    val topBillUrgency: Urgency? = null
 )
 
 sealed class DashboardEvent {
@@ -45,6 +47,7 @@ class DashboardViewModel(
         viewModelScope.launch {
             repository.observeActiveBills(userId).collect { bills ->
                 currentBills = bills
+                val topBill = bills.firstOrNull()
                 _uiState.value = DashboardUiState(
                     listItems = groupByUrgency(bills),
                     hasBills = bills.isNotEmpty(),
@@ -52,7 +55,9 @@ class DashboardViewModel(
                         .map { (currency, group) -> currency to group.sumOf { it.amount } },
                     overdueCount = bills.count {
                         DueDateFormatter.urgencyFor(it.nextDueDateMillis, warningDays) == Urgency.OVERDUE
-                    }
+                    },
+                    topBill = topBill,
+                    topBillUrgency = topBill?.let { DueDateFormatter.urgencyFor(it.nextDueDateMillis, warningDays) }
                 )
             }
         }

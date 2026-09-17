@@ -11,6 +11,7 @@ import com.example.billreminder.ui.bill.AddEditBillActivity
 import com.example.billreminder.util.BillCurrencies
 import com.example.billreminder.util.BottomNavHelper
 import com.example.billreminder.util.TopLevelDestination
+import com.example.billreminder.util.TransitionHelper
 import com.example.billreminder.util.ViewModelFactory
 import com.example.billreminder.util.app
 import com.google.android.material.snackbar.Snackbar
@@ -46,6 +47,7 @@ class CurrencyActivity : AppCompatActivity() {
 
         binding.btnEmptyAddBill.setOnClickListener {
             startActivity(android.content.Intent(this, AddEditBillActivity::class.java))
+            TransitionHelper.forward(this)
         }
 
         binding.dropdownBill.setOnItemClickListener { _, _, position, _ ->

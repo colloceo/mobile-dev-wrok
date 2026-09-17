@@ -52,5 +52,6 @@ object BottomNavHelper {
         // the screen actually being shown — no stale bottom-nav state.
         activity.startActivity(Intent(activity, targetClass))
         activity.finish()
+        TransitionHelper.crossFade(activity)
     }
 }
